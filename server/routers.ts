@@ -1,7 +1,16 @@
 import { COOKIE_NAME } from "@shared/const";
 import { getSessionCookieOptions } from "./_core/cookies";
 import { systemRouter } from "./_core/systemRouter";
-import { publicProcedure, router } from "./_core/trpc";
+import { publicProcedure, protectedProcedure, router } from "./_core/trpc";
+import { z } from "zod";
+import { 
+  getAllBlogPosts, 
+  getBlogPostById, 
+  getPendingTopics, 
+  getPublicationLogs,
+  getAllConfigs,
+  setConfig
+} from "./db";
 
 export const appRouter = router({
     // if you need to use socket.io, read and register route in server/_core/index.ts, all api should start with '/api/' so that the gateway can route correctly
@@ -17,12 +26,49 @@ export const appRouter = router({
     }),
   }),
 
-  // TODO: add feature routers here, e.g.
-  // todo: router({
-  //   list: protectedProcedure.query(({ ctx }) =>
-  //     db.getUserTodos(ctx.user.id)
-  //   ),
-  // }),
+  // SEO Agent routers
+  config: router({
+    get: protectedProcedure.query(async () => {
+      const configs = await getAllConfigs();
+      return configs.reduce((acc, config) => {
+        acc[config.key] = config.value;
+        return acc;
+      }, {} as Record<string, string>);
+    }),
+    set: protectedProcedure
+      .input(z.object({ key: z.string(), value: z.string() }))
+      .mutation(async ({ input }) => {
+        await setConfig(input.key, input.value);
+        return { success: true };
+      }),
+  }),
+
+  posts: router({
+    list: protectedProcedure.query(async () => {
+      return await getAllBlogPosts();
+    }),
+    get: protectedProcedure
+      .input(z.object({ id: z.number() }))
+      .query(async ({ input }) => {
+        return await getBlogPostById(input.id);
+      }),
+  }),
+
+  topics: router({
+    pending: protectedProcedure.query(async () => {
+      return await getPendingTopics();
+    }),
+  }),
+
+  publication: router({
+    logs: protectedProcedure.query(async () => {
+      return await getPublicationLogs();
+    }),
+    trigger: protectedProcedure.mutation(async () => {
+      // This will be implemented to trigger manual publication
+      return { success: true, message: 'Manual publication triggered' };
+    }),
+  }),
 });
 
 export type AppRouter = typeof appRouter;
