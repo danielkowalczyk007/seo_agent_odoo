@@ -8,6 +8,7 @@ import { toast } from "sonner";
 
 export default function Dashboard() {
   const { user } = useAuth();
+  const utils = trpc.useUtils();
   const { data: posts, isLoading: postsLoading } = trpc.posts.list.useQuery();
   const { data: logs, isLoading: logsLoading } = trpc.publication.logs.useQuery();
   const triggerPublication = trpc.publication.trigger.useMutation({
@@ -22,6 +23,9 @@ export default function Dashboard() {
         description: "Check the Posts page to review and approve it.",
         duration: 10000,
       });
+      // Auto-refresh lists
+      utils.posts.list.invalidate();
+      utils.publication.logs.invalidate();
     },
     onError: (error) => {
       toast.error("❌ Failed to generate article", {

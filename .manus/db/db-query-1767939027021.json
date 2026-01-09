@@ -1,0 +1,13 @@
+{
+  "query": "SELECT GROUP_CONCAT(`key` SEPARATOR ', ') as all_keys FROM configuration;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 27rjeueS539kGQ2.4bf077d19b17 --database 9f5pVWYESdZELesKfmFbrq --execute SELECT GROUP_CONCAT(`key` SEPARATOR ', ') as all_keys FROM configuration;",
+  "rows": [
+    {
+      "all_keys": "anthropic_api_key, anthropicApiKey, gemini_api_key, geminiApiKey, odoo_api_key, odooApiKey, openai_api_key, openaiApiKey, test_key"
+    }
+  ],
+  "messages": [],
+  "stdout": "all_keys\nanthropic_api_key, anthropicApiKey, gemini_api_key, geminiApiKey, odoo_api_key, odooApiKey, openai_api_key, openaiApiKey, test_key\n",
+  "stderr": "",
+  "execution_time_ms": 60
+}

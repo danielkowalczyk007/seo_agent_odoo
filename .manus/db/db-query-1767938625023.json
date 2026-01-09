@@ -1,0 +1,40 @@
+{
+  "query": "SELECT id, topic_name, category, status FROM topics WHERE status = 'pending' LIMIT 5;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 27rjeueS539kGQ2.4bf077d19b17 --database 9f5pVWYESdZELesKfmFbrq --execute SELECT id, topic_name, category, status FROM topics WHERE status = 'pending' LIMIT 5;",
+  "rows": [
+    {
+      "id": "1",
+      "topic_name": "Kompensacja mocy biernej - podstawy i korzyści dla przedsiębiorstw",
+      "category": "kompensacja",
+      "status": "pending"
+    },
+    {
+      "id": "2",
+      "topic_name": "Jak obliczyć zapotrzebowanie na kompensację mocy biernej?",
+      "category": "kompensacja",
+      "status": "pending"
+    },
+    {
+      "id": "3",
+      "topic_name": "Kary za niską wartość współczynnika mocy cosφ - jak ich uniknąć?",
+      "category": "kompensacja",
+      "status": "pending"
+    },
+    {
+      "id": "4",
+      "topic_name": "Kompensacja mocy biernej w instalacjach przemysłowych - case study",
+      "category": "kompensacja",
+      "status": "pending"
+    },
+    {
+      "id": "5",
+      "topic_name": "Kompensatory SVG - nowoczesna technologia kompensacji mocy biernej",
+      "category": "svg",
+      "status": "pending"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\ttopic_name\tcategory\tstatus\n1\tKompensacja mocy biernej - podstawy i korzyści dla przedsiębiorstw\tkompensacja\tpending\n2\tJak obliczyć zapotrzebowanie na kompensację mocy biernej?\tkompensacja\tpending\n3\tKary za niską wartość współczynnika mocy cosφ - jak ich uniknąć?\tkompensacja\tpending\n4\tKompensacja mocy biernej w instalacjach przemysłowych - case study\tkompensacja\tpending\n5\tKompensatory SVG - nowoczesna technologia kompensacji mocy biernej\tsvg\tpending\n",
+  "stderr": "",
+  "execution_time_ms": 53
+}

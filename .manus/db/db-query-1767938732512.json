@@ -1,0 +1,46 @@
+{
+  "query": "SELECT `key`, LEFT(value, 50) as value_preview FROM configuration ORDER BY `key`;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 27rjeueS539kGQ2.4bf077d19b17 --database 9f5pVWYESdZELesKfmFbrq --execute SELECT `key`, LEFT(value, 50) as value_preview FROM configuration ORDER BY `key`;",
+  "rows": [
+    {
+      "key": "anthropic_api_key",
+      "value_preview": "sk-ant-api03-hEbzneEw9rFJ71iOgiMfVKWkJiJqK-KSF9zsB"
+    },
+    {
+      "key": "anthropicApiKey",
+      "value_preview": "sk-ant-api03-hEbzneEw9rFJ71iOgiMfVKWkJiJqK-KSF9zsB"
+    },
+    {
+      "key": "gemini_api_key",
+      "value_preview": "AIzaSyBUpcsO_Y0txvI7Zd-0Y6V6wCkhJf_jvg4"
+    },
+    {
+      "key": "geminiApiKey",
+      "value_preview": "AIzaSyBUpcsO_Y0txvI7Zd-0Y6V6wCkhJf_jvg4"
+    },
+    {
+      "key": "odoo_api_key",
+      "value_preview": "e40fda0593050e205a83a72624d337868dfd5a02"
+    },
+    {
+      "key": "odooApiKey",
+      "value_preview": "e40fda0593050e205a83a72624d337868dfd5a02"
+    },
+    {
+      "key": "openai_api_key",
+      "value_preview": "sk-proj-_2NKFbNkoWv49su5V4ncFvrHqSMvAbfLSmXQmudrNv"
+    },
+    {
+      "key": "openaiApiKey",
+      "value_preview": "sk-proj-_2NKFbNkoWv49su5V4ncFvrHqSMvAbfLSmXQmudrNv"
+    },
+    {
+      "key": "test_key",
+      "value_preview": "test_value"
+    }
+  ],
+  "messages": [],
+  "stdout": "key\tvalue_preview\nanthropic_api_key\tsk-ant-api03-hEbzneEw9rFJ71iOgiMfVKWkJiJqK-KSF9zsB\nanthropicApiKey\tsk-ant-api03-hEbzneEw9rFJ71iOgiMfVKWkJiJqK-KSF9zsB\ngemini_api_key\tAIzaSyBUpcsO_Y0txvI7Zd-0Y6V6wCkhJf_jvg4\ngeminiApiKey\tAIzaSyBUpcsO_Y0txvI7Zd-0Y6V6wCkhJf_jvg4\nodoo_api_key\te40fda0593050e205a83a72624d337868dfd5a02\nodooApiKey\te40fda0593050e205a83a72624d337868dfd5a02\nopenai_api_key\tsk-proj-_2NKFbNkoWv49su5V4ncFvrHqSMvAbfLSmXQmudrNv\nopenaiApiKey\tsk-proj-_2NKFbNkoWv49su5V4ncFvrHqSMvAbfLSmXQmudrNv\ntest_key\ttest_value\n",
+  "stderr": "",
+  "execution_time_ms": 60
+}

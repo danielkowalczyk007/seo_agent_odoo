@@ -34,10 +34,13 @@ export const appRouter = router({
   config: router({
     get: protectedProcedure.query(async () => {
       const configs = await getAllConfigs();
-      return configs.reduce((acc, config) => {
-        acc[config.key] = config.value;
-        return acc;
-      }, {} as Record<string, string>);
+      // Convert snake_case keys to camelCase for frontend
+      const result: Record<string, string> = {};
+      configs.forEach(config => {
+        const camelKey = config.key.replace(/_([a-z])/g, (_, letter) => letter.toUpperCase());
+        result[camelKey] = config.value;
+      });
+      return result;
     }),
     set: protectedProcedure
       .input(z.object({ key: z.string(), value: z.string() }))
@@ -69,31 +72,41 @@ export const appRouter = router({
       return await getPublicationLogs();
     }),
     trigger: protectedProcedure.mutation(async () => {
-      try {
-        // Get configuration
-        const odooUrlConfig = await getConfig('odoo_url');
-        const odooApiKeyConfig = await getConfig('odoo_api_key');
-        const odooDatabaseConfig = await getConfig('odoo_database');
-        const odooBlogIdConfig = await getConfig('odoo_blog_id');
+      // Debug: Check all configs first
+      const allConfigs = await getAllConfigs();
+      console.log('[Publication] All configs in DB:', allConfigs.map(c => c.key));
+      
+      // Get configuration
+      const odooUrlConfig = await getConfig('odoo_url');
+      const odooApiKeyConfig = await getConfig('odoo_api_key');
+      const odooDatabaseConfig = await getConfig('odoo_database');
+      const odooBlogIdConfig = await getConfig('odoo_blog_id');
 
-        if (!odooUrlConfig || !odooApiKeyConfig || !odooDatabaseConfig || !odooBlogIdConfig) {
-          throw new Error('Odoo configuration is incomplete');
-        }
+      console.log('[Publication] Config check:', {
+        odooUrl: odooUrlConfig ? `found: ${odooUrlConfig.value}` : 'missing',
+        odooApiKey: odooApiKeyConfig ? 'found' : 'missing',
+        odooDatabase: odooDatabaseConfig ? `found: ${odooDatabaseConfig.value}` : 'missing',
+        odooBlogId: odooBlogIdConfig ? `found: ${odooBlogIdConfig.value}` : 'missing',
+      });
 
-        // Import manual publication function
-        const { runManualPublication } = await import('./manual-publication');
-
-        // Run manual publication (uses system API keys)
-        await runManualPublication();
-
-        return { success: true, message: 'Publication completed successfully' };
-      } catch (error) {
-        console.error('[Publication] Trigger failed:', error);
-        return { 
-          success: false, 
-          message: `Publication failed: ${error instanceof Error ? error.message : 'Unknown error'}` 
-        };
+      if (!odooUrlConfig || !odooApiKeyConfig || !odooDatabaseConfig || !odooBlogIdConfig) {
+        throw new Error('Odoo configuration is incomplete');
       }
+
+      // Import manual publication function
+      const { runManualPublication } = await import('./manual-publication');
+
+      // Run manual publication (uses system API keys)
+      console.log('[Publication] Starting runManualPublication...');
+      try {
+        await runManualPublication();
+        console.log('[Publication] runManualPublication completed successfully');
+      } catch (error) {
+        console.error('[Publication] runManualPublication failed:', error);
+        throw error;
+      }
+
+      return { success: true, message: 'Publication completed successfully' };
     }),
   }),
 

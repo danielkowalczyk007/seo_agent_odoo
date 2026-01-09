@@ -49,8 +49,13 @@ export async function writeWithGemini(
       generatedAt: new Date(),
     };
   } catch (error) {
-    console.error('[Gemini] Failed to generate article:', error);
-    throw new Error('Gemini generation failed');
+    console.error('[Gemini] Failed to generate article:');
+    console.error('[Gemini] Error details:', error);
+    if (error instanceof Error) {
+      console.error('[Gemini] Error message:', error.message);
+      console.error('[Gemini] Error stack:', error.stack);
+    }
+    throw new Error(`Gemini generation failed: ${error instanceof Error ? error.message : 'Unknown error'}`);
   }
 }
 

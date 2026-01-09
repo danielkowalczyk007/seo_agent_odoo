@@ -1,0 +1,8 @@
+{
+  "query": "SELECT id, title, status, approval_status, ai_writer, seo_score, total_score, created_at FROM blog_post ORDER BY created_at DESC LIMIT 1;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 27rjeueS539kGQ2.4bf077d19b17 --database 9f5pVWYESdZELesKfmFbrq --execute SELECT id, title, status, approval_status, ai_writer, seo_score, total_score, created_at FROM blog_post ORDER BY created_at DESC LIMIT 1;",
+  "returncode": 1,
+  "logs": [
+    "ERROR 1146 (42S02) at line 1: Table '9f5pvwyesdzeleskfmfbrq.blog_post' doesn't exist"
+  ]
+}

@@ -1,0 +1,64 @@
+{
+  "query": "SELECT * FROM configuration;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 27rjeueS539kGQ2.4bf077d19b17 --database 9f5pVWYESdZELesKfmFbrq --execute SELECT * FROM configuration;",
+  "rows": [
+    {
+      "id": "1",
+      "key": "geminiApiKey",
+      "value": "AIzaSyBUpcsO_Y0txvI7Zd-0Y6V6wCkhJf_jvg4",
+      "updated_at": "2026-01-09 01:11:25"
+    },
+    {
+      "id": "2",
+      "key": "anthropicApiKey",
+      "value": "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",
+      "updated_at": "2026-01-09 01:11:25"
+    },
+    {
+      "id": "3",
+      "key": "openaiApiKey",
+      "value": "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",
+      "updated_at": "2026-01-09 01:11:25"
+    },
+    {
+      "id": "4",
+      "key": "odooApiKey",
+      "value": "e40fda0593050e205a83a72624d337868dfd5a02",
+      "updated_at": "2026-01-09 01:11:25"
+    },
+    {
+      "id": "30001",
+      "key": "test_key",
+      "value": "test_value",
+      "updated_at": "2026-01-09 00:39:04"
+    },
+    {
+      "id": "60001",
+      "key": "odoo_api_key",
+      "value": "e40fda0593050e205a83a72624d337868dfd5a02",
+      "updated_at": "2026-01-09 05:56:49"
+    },
+    {
+      "id": "60002",
+      "key": "gemini_api_key",
+      "value": "AIzaSyBUpcsO_Y0txvI7Zd-0Y6V6wCkhJf_jvg4",
+      "updated_at": "2026-01-09 05:56:49"
+    },
+    {
+      "id": "60003",
+      "key": "openai_api_key",
+      "value": "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",
+      "updated_at": "2026-01-09 05:56:49"
+    },
+    {
+      "id": "60004",
+      "key": "anthropic_api_key",
+      "value": "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",
+      "updated_at": "2026-01-09 05:56:49"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tkey\tvalue\tupdated_at\n1\tgeminiApiKey\tAIzaSyBUpcsO_Y0txvI7Zd-0Y6V6wCkhJf_jvg4\t2026-01-09 01:11:25\n2\tanthropicApiKey\t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\t2026-01-09 01:11:25\n3\topenaiApiKey\t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\t2026-01-09 01:11:25\n4\todooApiKey\te40fda0593050e205a83a72624d337868dfd5a02\t2026-01-09 01:11:25\n30001\ttest_key\ttest_value\t2026-01-09 00:39:04\n60001\todoo_api_key\te40fda0593050e205a83a72624d337868dfd5a02\t2026-01-09 05:56:49\n60002\tgemini_api_key\tAIzaSyBUpcsO_Y0txvI7Zd-0Y6V6wCkhJf_jvg4\t2026-01-09 05:56:49\n60003\topenai_api_key\t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\t2026-01-09 05:56:49\n60004\tanthropic_api_key\t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\t2026-01-09 05:56:49\n",
+  "stderr": "",
+  "execution_time_ms": 84
+}

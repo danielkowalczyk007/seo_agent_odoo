@@ -1,0 +1,37 @@
+{
+  "query": "SELECT `key` FROM configuration ORDER BY `key`;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 27rjeueS539kGQ2.4bf077d19b17 --database 9f5pVWYESdZELesKfmFbrq --execute SELECT `key` FROM configuration ORDER BY `key`;",
+  "rows": [
+    {
+      "key": "anthropic_api_key"
+    },
+    {
+      "key": "anthropicApiKey"
+    },
+    {
+      "key": "gemini_api_key"
+    },
+    {
+      "key": "geminiApiKey"
+    },
+    {
+      "key": "odoo_api_key"
+    },
+    {
+      "key": "odooApiKey"
+    },
+    {
+      "key": "openai_api_key"
+    },
+    {
+      "key": "openaiApiKey"
+    },
+    {
+      "key": "test_key"
+    }
+  ],
+  "messages": [],
+  "stdout": "key\nanthropic_api_key\nanthropicApiKey\ngemini_api_key\ngeminiApiKey\nodoo_api_key\nodooApiKey\nopenai_api_key\nopenaiApiKey\ntest_key\n",
+  "stderr": "",
+  "execution_time_ms": 59
+}

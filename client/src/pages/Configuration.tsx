@@ -44,9 +44,27 @@ export default function Configuration() {
   }, [config]);
 
   const handleSave = async () => {
-    for (const [key, value] of Object.entries(formData)) {
-      if (value) {
-        await setConfigMutation.mutateAsync({ key, value });
+    const keyMapping: Record<string, string> = {
+      odooUrl: 'odoo_url',
+      odooApiKey: 'odoo_api_key',
+      odooDatabase: 'odoo_database',
+      odooBlogId: 'odoo_blog_id',
+      geminiApiKey: 'gemini_api_key',
+      openaiApiKey: 'openai_api_key',
+      anthropicApiKey: 'anthropic_api_key',
+    };
+
+    console.log('[Configuration] Saving formData:', formData);
+
+    for (const [camelKey, value] of Object.entries(formData)) {
+      // Save all fields, even empty ones (to allow clearing values)
+      const snakeKey = keyMapping[camelKey] || camelKey;
+      console.log(`[Configuration] Saving ${camelKey} -> ${snakeKey}: ${value ? 'has value' : 'empty'}`);
+      try {
+        await setConfigMutation.mutateAsync({ key: snakeKey, value: value || '' });
+      } catch (error) {
+        console.error(`[Configuration] Failed to save ${snakeKey}:`, error);
+        throw error;
       }
     }
   };

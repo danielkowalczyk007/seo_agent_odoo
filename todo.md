@@ -140,3 +140,30 @@
 - [x] Sprawdzić komponenty React które mogą powodować problem
 - [x] Naprawić błąd renderowania (dodano filter i unikalne keys)
 - [x] Przetestować aplikację po naprawie
+
+
+## Kontynuacja naprawy błędu JavaScript
+- [ ] Sprawdzić komponent Configuration.tsx
+- [ ] Naprawić wszystkie komponenty z problemami renderowania
+- [ ] Przetestować całą aplikację
+
+
+## Auto-refresh listy Posts
+- [x] Dodać invalidate queries w onSuccess callback triggerPublication
+- [ ] Przetestować auto-refresh po wygenerowaniu artykułu
+
+
+## Naprawa błędu "Odoo configuration is incomplete"
+- [x] Sprawdzić bazę danych - czy wpisy są zapisane
+- [x] Sprawdzić funkcję getOdooConfig() w manual-publication.ts
+- [x] Naprawić pobieranie konfiguracji z bazy danych
+- [x] Przetestować generowanie artykułu po naprawie
+
+## Naprawa konfiguracji i generowania artykułów (9 stycznia 2026)
+- [x] Naprawić zapisywanie konfiguracji - usunąć warunek `if (value)` aby zapisywać wszystkie pola
+- [x] Naprawić pobieranie kluczy API - zmienić z process.env na getConfig() z bazy
+- [x] Naprawić tworzenie ArticleOutline - dodać wszystkie wymagane pola (topic, keywords, targetLength, sections)
+- [x] Zastąpić zewnętrzne API (Gemini/OpenAI/Anthropic) wbudowanym invokeLLM z Manus
+- [x] Naprawić typy TypeScript w manual-publication.ts
+- [x] Przetestować generowanie artykułu end-to-end
+- [x] Wygenerować pierwszy artykuł testowy pomyślnie

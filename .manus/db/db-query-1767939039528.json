@@ -1,0 +1,18 @@
+{
+  "query": "SELECT `key`, value FROM configuration WHERE `key` LIKE '%odoo%' LIMIT 10;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 27rjeueS539kGQ2.4bf077d19b17 --database 9f5pVWYESdZELesKfmFbrq --execute SELECT `key`, value FROM configuration WHERE `key` LIKE '%odoo%' LIMIT 10;",
+  "rows": [
+    {
+      "key": "odooApiKey",
+      "value": "e40fda0593050e205a83a72624d337868dfd5a02"
+    },
+    {
+      "key": "odoo_api_key",
+      "value": "e40fda0593050e205a83a72624d337868dfd5a02"
+    }
+  ],
+  "messages": [],
+  "stdout": "key\tvalue\nodooApiKey\te40fda0593050e205a83a72624d337868dfd5a02\nodoo_api_key\te40fda0593050e205a83a72624d337868dfd5a02\n",
+  "stderr": "",
+  "execution_time_ms": 66
+}
