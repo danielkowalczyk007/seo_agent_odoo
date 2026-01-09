@@ -1,0 +1,197 @@
+[
+  {
+    "id": 1,
+    "title": "Kompensacja mocy biernej - podstawy i korzyści dla przedsiębiorstw",
+    "keywords": [
+      "kompensacja mocy biernej",
+      "moc bierna",
+      "współczynnik mocy",
+      "cosφ",
+      "oszczędności energii"
+    ],
+    "targetAudience": "Właściciele firm, menedżerowie zakładów przemysłowych",
+    "seoDifficulty": 45,
+    "outline": [
+      "Czym jest moc bierna i dlaczego jest problemem?",
+      "Podstawy kompensacji mocy biernej",
+      "Korzyści finansowe - redukcja kar i opłat",
+      "Korzyści techniczne - lepsza jakość energii",
+      "Wpływ na środowisko i efektywność energetyczną",
+      "Kiedy warto zainwestować w kompensację?",
+      "FAQ - najczęstsze pytania o kompensację mocy biernej"
+    ],
+    "relatedProducts": ["Baterie kondensatorów", "Regulatory mocy biernej", "Analizatory sieci"]
+  },
+  {
+    "id": 2,
+    "title": "Jak obliczyć zapotrzebowanie na kompensację mocy biernej?",
+    "keywords": [
+      "obliczanie mocy biernej",
+      "zapotrzebowanie na kompensację",
+      "kalkulator mocy biernej",
+      "dobór baterii kondensatorów",
+      "moc bierna wzory"
+    ],
+    "targetAudience": "Inżynierowie elektrycy, projektanci instalacji elektrycznych",
+    "seoDifficulty": 38,
+    "outline": [
+      "Parametry potrzebne do obliczeń - moc czynna, cosφ, napięcie",
+      "Wzory i metody obliczania mocy biernej",
+      "Kalkulator online - krok po kroku",
+      "Przykłady obliczeń dla różnych instalacji",
+      "Tabela mocy biernej w zależności od obciążenia",
+      "Błędy w obliczeniach - jak ich unikać?",
+      "Narzędzia pomiarowe do weryfikacji obliczeń",
+      "FAQ - pytania o obliczanie kompensacji"
+    ],
+    "relatedProducts": ["Kalkulatory mocy", "Mierniki parametrów sieci", "Oprogramowanie projektowe"]
+  },
+  {
+    "id": 3,
+    "title": "Kary za niską wartość współczynnika mocy cosφ - jak ich uniknąć?",
+    "keywords": [
+      "kary za niski cosφ",
+      "współczynnik mocy kary",
+      "opłaty za moc bierną",
+      "taryfa za cosφ",
+      "unikanie kar energetycznych"
+    ],
+    "targetAudience": "Dyrektorzy finansowi, zarządcy obiektów przemysłowych",
+    "seoDifficulty": 42,
+    "outline": [
+      "System kar za niski współczynnik mocy w Polsce",
+      "Jak obliczane są kary za moc bierną?",
+      "Tabela kar w zależności od wartości cosφ",
+      "Przykłady rzeczywistych kar - case study",
+      "Jak monitorować współczynnik mocy?",
+      "Rozwiązania techniczne eliminujące kary",
+      "Zwrot z inwestycji w kompensację - ile można zaoszczędzić?",
+      "FAQ - pytania o kary i opłaty"
+    ],
+    "relatedProducts": ["Systemy monitoringu", "Baterie kondensatorów", "Regulatory automatyczne"]
+  },
+  {
+    "id": 4,
+    "title": "Kompensacja mocy biernej w instalacjach przemysłowych - case study",
+    "keywords": [
+      "kompensacja przemysłowa",
+      "instalacje przemysłowe",
+      "moc bierna zakład",
+      "case study kompensacja",
+      "przykłady wdrożeń"
+    ],
+    "targetAudience": "Inżynierowie, menedżerowie produkcji, właściciele zakładów",
+    "seoDifficulty": 35,
+    "outline": [
+      "Wyzwania kompensacji w przemyśle",
+      "Case study 1: Zakład produkcyjny - 40% redukcja kosztów",
+      "Case study 2: Hala magazynowa - eliminacja kar",
+      "Case study 3: Linia produkcyjna - poprawa jakości energii",
+      "Tabela porównawcza - przed i po wdrożeniu",
+      "Najczęstsze problemy i ich rozwiązania",
+      "Rekomendacje dla różnych branż przemysłowych",
+      "FAQ - pytania o wdrożenia przemysłowe"
+    ],
+    "relatedProducts": ["Systemy kompensacji przemysłowej", "Regulatory zaawansowane", "Usługi audytu energetycznego"]
+  },
+  {
+    "id": 5,
+    "title": "Kompensatory SVG - nowoczesna technologia kompensacji mocy biernej",
+    "keywords": [
+      "kompensator SVG",
+      "Static VAR Generator",
+      "dynamiczna kompensacja",
+      "SVG technologia",
+      "nowoczesna kompensacja"
+    ],
+    "targetAudience": "Inżynierowie elektrycy, specjaliści ds. energetyki",
+    "seoDifficulty": 48,
+    "outline": [
+      "Czym jest kompensator SVG (Static VAR Generator)?",
+      "Zasada działania technologii SVG",
+      "Różnice między SVG a tradycyjnymi bateriami kondensatorów",
+      "Zalety kompensatorów SVG - szybkość, precyzja, niezawodność",
+      "Zastosowania SVG w różnych branżach",
+      "Parametry techniczne i specyfikacje",
+      "Koszty i zwrot z inwestycji",
+      "FAQ - pytania o technologię SVG"
+    ],
+    "relatedProducts": ["Kompensatory SVG", "Systemy FACTS", "Regulatory cyfrowe"]
+  },
+  {
+    "id": 6,
+    "title": "SVG vs tradycyjne baterie kondensatorów - porównanie rozwiązań",
+    "keywords": [
+      "SVG vs kondensatory",
+      "porównanie kompensatorów",
+      "baterie kondensatorów",
+      "wybór systemu kompensacji",
+      "SVG czy kondensatory"
+    ],
+    "targetAudience": "Decydenci, inwestorzy, inżynierowie projektanci",
+    "seoDifficulty": 40,
+    "outline": [
+      "Wprowadzenie - dwa podejścia do kompensacji",
+      "Tabela porównawcza SVG vs baterie kondensatorów",
+      "Czas reakcji i dynamika kompensacji",
+      "Koszty inwestycyjne i eksploatacyjne",
+      "Niezawodność i żywotność urządzeń",
+      "Wymagania konserwacyjne",
+      "Kiedy wybrać SVG, a kiedy baterie kondensatorów?",
+      "Przykłady zastosowań obu technologii",
+      "FAQ - pytania o wybór rozwiązania"
+    ],
+    "relatedProducts": ["Kompensatory SVG", "Baterie kondensatorów", "Systemy hybrydowe"]
+  },
+  {
+    "id": 7,
+    "title": "Zastosowania kompensatorów SVG w energetyce odnawialnej",
+    "keywords": [
+      "SVG OZE",
+      "kompensacja fotowoltaika",
+      "SVG farmy wiatrowe",
+      "energetyka odnawialna",
+      "stabilizacja sieci OZE"
+    ],
+    "targetAudience": "Inwestorzy OZE, operatorzy farm wiatrowych i fotowoltaicznych",
+    "seoDifficulty": 52,
+    "outline": [
+      "Wyzwania kompensacji w instalacjach OZE",
+      "Dlaczego SVG jest idealny dla energetyki odnawialnej?",
+      "Zastosowania w farmach fotowoltaicznych",
+      "Zastosowania w farmach wiatrowych",
+      "Stabilizacja napięcia i częstotliwości",
+      "Wymagania operatorów sieci (PSE, OSD)",
+      "Case study: Farma PV 5 MW z kompensatorem SVG",
+      "Regulacje prawne i normy techniczne",
+      "FAQ - pytania o SVG w OZE"
+    ],
+    "relatedProducts": ["Kompensatory SVG dla OZE", "Systemy stabilizacji", "Regulatory grid-code"]
+  },
+  {
+    "id": 8,
+    "title": "Jak wybrać odpowiedni kompensator SVG dla swojej instalacji?",
+    "keywords": [
+      "dobór kompensatora SVG",
+      "wybór SVG",
+      "parametry SVG",
+      "specyfikacja kompensatora",
+      "kalkulator SVG"
+    ],
+    "targetAudience": "Inżynierowie, projektanci, inwestorzy",
+    "seoDifficulty": 36,
+    "outline": [
+      "Parametry instalacji potrzebne do doboru SVG",
+      "Moc kompensatora - jak obliczyć zapotrzebowanie?",
+      "Napięcie i częstotliwość pracy",
+      "Dynamika obciążenia i czas reakcji",
+      "Wymagania dotyczące harmonicznych",
+      "Tabela doboru mocy SVG w zależności od instalacji",
+      "Kalkulator online - dobór kompensatora krok po kroku",
+      "Kryteria wyboru producenta i modelu",
+      "Koszty i okres zwrotu inwestycji",
+      "FAQ - pytania o dobór SVG"
+    ],
+    "relatedProducts": ["Kompensatory SVG różne moce", "Usługi projektowe", "Audyt energetyczny"]
+  }
+]

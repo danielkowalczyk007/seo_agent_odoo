@@ -66,3 +66,14 @@
 - [ ] Stworzyć nowy blog "Produkty" w Odoo (do wykonania ręcznie przez użytkownika)
 - [x] Dodać instrukcje SEO + GEO (Generative Engine Optimization) dla pisarzy AI
 - [x] Zintegrować instrukcje SEO+GEO z modułem AI writers
+
+
+## Nowe zadania - Testowanie i przygotowanie wpisów
+- [x] Przetestować aplikację i zdiagnozować problemy
+- [x] Naprawić błędy w aplikacji
+- [x] Przygotować 4 tematy o kompensacji mocy biernej
+- [x] Przygotować 4 tematy o kompensatorach SVG
+- [x] Dodać tematy do bazy danych
+- [x] Napisać i uruchomić testy jednostkowe
+- [ ] Wygenerować 8 wpisów blogowych (użytkownik może użyć Trigger Publication)
+- [ ] Opublikować wpisy w Odoo (automatycznie przez system)
