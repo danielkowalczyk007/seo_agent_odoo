@@ -133,3 +133,10 @@
 - [x] Dodać toast notification z błędem jeśli generowanie się nie powiodło
 - [ ] Dodać progress indicator z etapami (opcjonalne - wymaga WebSocket/SSE)
 - [x] Przetestować feedback UI
+
+
+## Naprawa błędu JavaScript
+- [x] Zdiagnozować błąd "NotFoundError: Failed to execute 'insertBefore' on 'Node'"
+- [x] Sprawdzić komponenty React które mogą powodować problem
+- [x] Naprawić błąd renderowania (dodano filter i unikalne keys)
+- [x] Przetestować aplikację po naprawie

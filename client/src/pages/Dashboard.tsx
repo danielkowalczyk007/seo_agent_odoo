@@ -132,8 +132,8 @@ export default function Dashboard() {
                 <div className="text-center py-8 text-muted-foreground">Loading...</div>
               ) : posts && posts.length > 0 ? (
                 <div className="space-y-4">
-                  {posts.slice(0, 5).map(post => (
-                    <div key={post.id} className="border-b pb-3 last:border-0">
+                  {posts.slice(0, 5).filter(post => post && post.id).map(post => (
+                    <div key={`post-${post.id}`} className="border-b pb-3 last:border-0">
                       <div className="flex justify-between items-start">
                         <div className="flex-1">
                           <h3 className="font-medium">{post.title}</h3>
@@ -173,8 +173,8 @@ export default function Dashboard() {
                 <div className="text-center py-8 text-muted-foreground">Loading...</div>
               ) : logs && logs.length > 0 ? (
                 <div className="space-y-3">
-                  {logs.slice(0, 5).map(log => (
-                    <div key={log.id} className="flex items-center gap-3 border-b pb-3 last:border-0">
+                  {logs.slice(0, 5).filter(log => log && log.id).map(log => (
+                    <div key={`log-${log.id}`} className="flex items-center gap-3 border-b pb-3 last:border-0">
                       <div className={`w-2 h-2 rounded-full ${
                         log.status === 'success' ? 'bg-green-500' : 
                         log.status === 'failed' ? 'bg-red-500' : 'bg-yellow-500'

@@ -59,8 +59,8 @@ export default function Posts() {
           <div className="text-center py-12">Loading posts...</div>
         ) : posts && posts.length > 0 ? (
           <div className="grid gap-6">
-            {posts.map(post => (
-              <Card key={post.id}>
+            {posts.filter(post => post && post.id).map(post => (
+              <Card key={`post-detail-${post.id}`}>
                 <CardHeader>
                   <div className="flex items-start justify-between">
                     <div className="flex-1">
@@ -130,8 +130,8 @@ export default function Posts() {
                     <div className="mb-4">
                       <div className="text-sm text-muted-foreground mb-2">Keywords</div>
                       <div className="flex flex-wrap gap-2">
-                        {JSON.parse(post.keywords).map((keyword: string, idx: number) => (
-                          <Badge key={idx} variant="outline">{keyword}</Badge>
+                        {(post.keywords ? JSON.parse(post.keywords) : []).map((keyword: string, idx: number) => (
+                          <Badge key={`keyword-${post.id}-${idx}`} variant="outline">{keyword}</Badge>
                         ))}
                       </div>
                     </div>

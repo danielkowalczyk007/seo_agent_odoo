@@ -27,8 +27,8 @@ export default function Topics() {
           <div className="text-center py-12">Loading topics...</div>
         ) : topics && topics.length > 0 ? (
           <div className="grid gap-6">
-            {topics.map(topic => (
-              <Card key={topic.id}>
+            {topics.filter(topic => topic && topic.id).map(topic => (
+              <Card key={`topic-${topic.id}`}>
                 <CardHeader>
                   <div className="flex items-start justify-between">
                     <div className="flex-1">
@@ -45,8 +45,8 @@ export default function Topics() {
                     <div className="mb-4">
                       <div className="text-sm text-muted-foreground mb-2">Keywords</div>
                       <div className="flex flex-wrap gap-2">
-                        {JSON.parse(topic.keywords).map((keyword: string, idx: number) => (
-                          <Badge key={idx} variant="outline">{keyword}</Badge>
+                        {(topic.keywords ? JSON.parse(topic.keywords) : []).map((keyword: string, idx: number) => (
+                          <Badge key={`topic-keyword-${topic.id}-${idx}`} variant="outline">{keyword}</Badge>
                         ))}
                       </div>
                     </div>
@@ -56,8 +56,8 @@ export default function Topics() {
                     <div className="mb-4">
                       <div className="text-sm text-muted-foreground mb-2">Related Products</div>
                       <div className="flex flex-wrap gap-2">
-                        {JSON.parse(topic.relatedProducts).map((product: string, idx: number) => (
-                          <Badge key={idx} variant="secondary">{product}</Badge>
+                        {(topic.relatedProducts ? JSON.parse(topic.relatedProducts) : []).map((product: string, idx: number) => (
+                          <Badge key={`topic-product-${topic.id}-${idx}`} variant="secondary">{product}</Badge>
                         ))}
                       </div>
                     </div>
