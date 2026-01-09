@@ -59,3 +59,10 @@
 - [ ] Przygotować checkpoint projektu
 - [ ] Stworzyć instrukcję konfiguracji
 - [ ] Dostarczyć dokumentację
+
+
+## Nowe zadania - Aktualizacja konfiguracji i blog Produkty
+- [x] Zaktualizować domyślne ID bloga z 1 na 2 (Aktualności)
+- [ ] Stworzyć nowy blog "Produkty" w Odoo (do wykonania ręcznie przez użytkownika)
+- [x] Dodać instrukcje SEO + GEO (Generative Engine Optimization) dla pisarzy AI
+- [x] Zintegrować instrukcje SEO+GEO z modułem AI writers

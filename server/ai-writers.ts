@@ -6,6 +6,7 @@
 import { GoogleGenerativeAI } from '@google/generative-ai';
 import OpenAI from 'openai';
 import Anthropic from '@anthropic-ai/sdk';
+import { getWritingInstructions } from './writing-instructions';
 
 export interface ArticleOutline {
   topic: string;
@@ -177,24 +178,37 @@ export async function generateArticlesParallel(
 }
 
 /**
- * Create prompt for AI writers
+ * Create prompt for AI writers with SEO + GEO instructions
  */
 function createPrompt(outline: ArticleOutline): string {
-  return `Write a comprehensive, SEO-optimized blog post about: "${outline.topic}"
+  const instructions = getWritingInstructions();
+  
+  return `${instructions}
 
-Target Keywords: ${outline.keywords.join(', ')}
-Target Length: ${outline.targetLength} words
-Required Sections: ${outline.sections.join(', ')}
+---
 
-Requirements:
-1. Write in Polish language
-2. Use engaging, conversational tone
-3. Include the target keywords naturally (1-2% density)
-4. Structure with clear H2 and H3 headings
-5. Add practical examples and actionable tips
-6. Include a compelling introduction and conclusion
-7. Optimize for readability (short paragraphs, bullet points where appropriate)
-8. Write in HTML format with proper semantic tags (<h2>, <h3>, <p>, <ul>, <li>, <strong>, <em>)
+# YOUR TASK
+
+Write a comprehensive blog post based on:
+
+**Topic**: ${outline.topic}
+**Keywords**: ${outline.keywords.join(', ')}
+**Target Length**: ${outline.targetLength} words
+**Required Sections**: ${outline.sections.join(', ')}
+
+**CRITICAL REQUIREMENTS**:
+1. Follow ALL instructions from the writing guide above
+2. Write in Polish language
+3. Format in HTML with semantic tags (<h2>, <h3>, <p>, <ul>, <li>, <table>, <strong>)
+4. Include ALL required elements:
+   - Cytowalne fragmenty (snippets)
+   - Tabele porównawcze
+   - Listy punktowane/numerowane
+   - Definicje kluczowych terminów
+   - Sekcja FAQ (5-7 pytań)
+   - Call-to-Action na końcu
+5. Optimize for both SEO and GEO
+6. Length: 1500-2000 words
 
 Write the complete article now:`;
 }

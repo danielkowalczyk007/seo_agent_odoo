@@ -119,7 +119,7 @@ export default function Configuration() {
                 <Input
                   id="odooBlogId"
                   type="number"
-                  placeholder="1"
+                  placeholder="2"
                   value={formData.odooBlogId}
                   onChange={(e) => setFormData({ ...formData, odooBlogId: e.target.value })}
                 />
