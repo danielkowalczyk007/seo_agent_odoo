@@ -21,15 +21,32 @@ Zautomatyzowany system generowania i publikacji treści blogowych zoptymalizowan
   - Sekcje FAQ
   - Definicje kluczowych terminów
 
+### Kategoryzacja tematów
+- **Kompensacja mocy biernej** - podstawy, obliczenia, kary, case studies
+- **Kompensatory SVG** - technologia, porównania, zastosowania, wybór
+
+### Workflow zatwierdzania
+- **Approve/Reject** - możliwość zatwierdzenia lub odrzucenia artykułu przed publikacją
+- **Automatyczne generowanie postów social media** po zatwierdzeniu
+- **Powiadomienia email** o statusie artykułów
+
+### Social Media Content
+Po zatwierdzeniu artykułu system automatycznie generuje posty promocyjne dla:
+- **LinkedIn** (profesjonalny, B2B, 150-200 słów)
+- **Facebook** (angażujący, emoji, 100-150 słów)
+- **Twitter/X** (zwięzły, max 280 znaków)
+- **Instagram** (storytelling, 150-200 słów, 5-10 hashtagów)
+
 ### Integracja z Odoo
 - Pobieranie produktów i kategorii z Odoo
 - Automatyczna publikacja wpisów w Odoo CMS
 - Wsparcie dla wielu blogów
+- **Integracja z Odoo Social Media** (w przygotowaniu - wymaga dostępu do API)
 
 ### Harmonogram publikacji
 - Automatyczna publikacja 2x w tygodniu:
-  - Poniedziałek, 9:00 GMT+1
-  - Czwartek, 9:00 GMT+1
+  - **Poniedziałek, 9:00 GMT+1** - Kompensacja mocy biernej
+  - **Czwartek, 9:00 GMT+1** - Kompensatory SVG
 
 ## 🚀 Pierwsze kroki
 
@@ -60,17 +77,21 @@ Przejdź do strony **Configuration** i uzupełnij:
 1. **Przetestuj konfigurację**:
    - Przejdź do **Dashboard**
    - Kliknij **Trigger Publication**
-   - System wygeneruje i opublikuje testowy wpis
+   - System wygeneruje artykuł (status: draft, pending approval)
 
-2. **Sprawdź wyniki**:
-   - Przejdź do **Posts** aby zobaczyć historię publikacji
-   - Sprawdź metryki SEO score, readability i engagement
-   - Porównaj wersje z różnych modeli AI
+2. **Zatwierdź artykuł**:
+   - Przejdź do **Posts**
+   - Znajdź wygenerowany artykuł
+   - Kliknij **Approve** aby zatwierdzić
+   - System automatycznie wygeneruje 4 posty social media
 
-3. **Zarządzaj tematami**:
-   - Przejdź do **Topics**
-   - Przeglądaj zaproponowane tematy
-   - System automatycznie generuje tematy na podstawie danych z Odoo
+3. **Opublikuj artykuł**:
+   - Po zatwierdzeniu kliknij **Publish**
+   - Artykuł zostanie opublikowany w Odoo CMS
+
+4. **Sprawdź posty social media**:
+   - Przejdź do **Social Media Posts**
+   - Zobacz wygenerowane posty dla LinkedIn, Facebook, Twitter, Instagram
 
 ## 📊 Panel administracyjny
 
@@ -78,6 +99,7 @@ Przejdź do strony **Configuration** i uzupełnij:
 - Przegląd ostatnich publikacji
 - Statystyki wydajności
 - Ręczne uruchamianie publikacji
+- Status zatwierdzania artykułów
 
 ### Configuration
 - Konfiguracja Odoo API
@@ -86,13 +108,40 @@ Przejdź do strony **Configuration** i uzupełnij:
 
 ### Posts
 - Historia wszystkich publikacji
+- **Approval Status** (pending, approved, rejected)
 - Metryki wydajności (views, engagement, SEO score)
-- Porównanie wersji z różnych modeli AI
+- Akcje: Approve, Reject, Publish
 
 ### Topics
 - Lista zaproponowanych tematów
+- **Kategoria** (kompensacja, svg)
 - Status tematów (pending, used)
 - Słowa kluczowe i trudność SEO
+
+### Social Media Posts (w przygotowaniu)
+- Lista wygenerowanych postów
+- Platforma (LinkedIn, Facebook, Twitter, Instagram)
+- Status publikacji
+- Podgląd treści i hashtagów
+
+## 🔄 Workflow publikacji
+
+### Automatyczny (scheduler)
+1. **Poniedziałek 9:00** - System wybiera temat z kategorii "kompensacja"
+2. Generuje 3 wersje artykułu (Gemini, ChatGPT, Claude)
+3. Ocenia i wybiera najlepszą wersję
+4. Zapisuje jako draft z statusem "pending approval"
+5. **Czekaj na zatwierdzenie**
+
+### Ręczny (workflow)
+1. **Przejrzyj artykuł** w sekcji Posts
+2. **Approve** - zatwierdź artykuł:
+   - System generuje 4 posty social media
+   - Wysyła powiadomienie email
+3. **Publish** - opublikuj zatwierdzony artykuł:
+   - Publikacja w Odoo CMS
+   - Aktualizacja statusu na "published"
+4. **Reject** - odrzuć artykuł (opcjonalnie z powodem)
 
 ## 🔧 Technologia
 
@@ -101,6 +150,7 @@ Przejdź do strony **Configuration** i uzupełnij:
 - **Express + tRPC** - type-safe API
 - **Drizzle ORM** - baza danych
 - **MySQL/TiDB** - przechowywanie danych
+- **Cron** - scheduler publikacji
 
 ### Frontend
 - **React 19**
@@ -138,24 +188,33 @@ System używa kompleksowych instrukcji pisania, które zapewniają:
 - Linki wewnętrzne: 3-5 na artykuł
 - Długość: 1500-2000 słów
 
-## 🔄 Automatyzacja
+## 📱 Social Media Content
 
-### Scheduler
-System automatycznie:
-1. Generuje tematy na podstawie produktów z Odoo
-2. Tworzy outline artykułu
-3. Zleca pisanie trzem modelom AI równolegle
-4. Ocenia wszystkie wersje
-5. Wybiera najlepszą
-6. Optymalizuje SEO (meta opisy, słowa kluczowe)
-7. Publikuje w Odoo CMS
-8. Wysyła powiadomienie email
+### LinkedIn (B2B, profesjonalny)
+- Długość: 150-200 słów
+- Rozpoczyna od pytania lub statystyki
+- Podkreśla wartość biznesową
+- 3-5 hashtagów branżowych
 
-### Powiadomienia
-Właściciel otrzymuje email o:
-- Udanej publikacji (tytuł, link, metryki)
-- Błędach publikacji (szczegóły błędu)
-- Raportach tygodniowych (podsumowanie wydajności)
+### Facebook (engagement)
+- Długość: 100-150 słów
+- Hook: pytanie lub ciekawostka
+- 2-3 emoji
+- Zachęta do komentowania
+- 3-5 hashtagów
+
+### Twitter/X (zwięzły)
+- Długość: max 280 znaków
+- Dynamiczny, bezpośredni
+- 1-2 emoji
+- 3-4 hashtagi
+
+### Instagram (storytelling)
+- Długość: 150-200 słów
+- Mini-historia lub scenariusz
+- 3-5 emoji
+- Krótkie akapity
+- 5-10 hashtagów
 
 ## 🛠️ Rozwój
 
@@ -173,6 +232,8 @@ seo_agent_odoo/
 │   ├── scheduler.ts       # Scheduler publikacji
 │   ├── odoo-client.ts     # Klient Odoo API
 │   ├── writing-instructions.ts  # Instrukcje SEO+GEO
+│   ├── social-media-generator.ts  # Generator postów social media
+│   ├── publication-workflow.ts    # Workflow zatwierdzania
 │   ├── db.ts              # Query helpers
 │   └── routers.ts         # tRPC routers
 └── drizzle/               # Schemat bazy danych
@@ -198,32 +259,24 @@ pnpm test
 
 ### tRPC Endpoints
 
-#### `config.get`
-Pobiera wszystkie konfiguracje
+#### Workflow
+- `workflow.approve` - Zatwierdź artykuł i wygeneruj posty social media
+- `workflow.reject` - Odrzuć artykuł (z opcjonalnym powodem)
+- `workflow.publish` - Opublikuj zatwierdzony artykuł w Odoo
 
-#### `config.set`
-Ustawia wartość konfiguracji
-```typescript
-{ key: string, value: string }
-```
+#### Social Media
+- `socialMedia.getByPostId` - Pobierz posty social media dla artykułu
 
-#### `posts.list`
-Lista wszystkich publikacji
+#### Posts
+- `posts.list` - Lista wszystkich publikacji
+- `posts.get` - Szczegóły pojedynczej publikacji
 
-#### `posts.get`
-Szczegóły pojedynczej publikacji
-```typescript
-{ id: number }
-```
+#### Topics
+- `topics.pending` - Lista oczekujących tematów (z filtrowaniem po kategorii)
 
-#### `topics.pending`
-Lista oczekujących tematów
-
-#### `publication.trigger`
-Ręczne uruchomienie publikacji
-
-#### `publication.logs`
-Historia publikacji z logami
+#### Configuration
+- `config.get` - Pobiera wszystkie konfiguracje
+- `config.set` - Ustawia wartość konfiguracji
 
 ## 🔐 Bezpieczeństwo
 
@@ -249,12 +302,32 @@ Historia publikacji z logami
 - Sprawdź czy blog istnieje w Odoo
 - Upewnij się, że masz uprawnienia do bloga
 
+### Artykuł nie publikuje się
+- Sprawdź czy artykuł ma status "approved"
+- Zweryfikuj konfigurację Odoo API
+- Sprawdź logi publikacji w Publication Log
+
+## 📈 Roadmap
+
+### Etap 1 (ukończony)
+- ✅ Kategoryzacja tematów (kompensacja vs SVG)
+- ✅ Generator treści social media
+- ✅ Workflow zatwierdzania artykułów
+- ✅ Harmonogram 2x w tygodniu (po jednym z każdej kategorii)
+
+### Etap 2 (w przygotowaniu)
+- 🔄 Integracja z Odoo Social Media API
+- 🔄 Automatyczna publikacja postów w Odoo Social Media
+- 🔄 Interfejs zarządzania postami social media
+- 🔄 Metryki wydajności postów social media
+
 ## 📞 Wsparcie
 
 W razie problemów:
 1. Sprawdź logi w konsoli przeglądarki
 2. Przejrzyj logi serwera
-3. Skontaktuj się z zespołem PowerGo
+3. Sprawdź Publication Log w dashboardzie
+4. Skontaktuj się z zespołem PowerGo
 
 ## 📄 Licencja
 
@@ -262,6 +335,6 @@ MIT License - Copyright (c) 2025 PowerGo
 
 ---
 
-**Wersja**: 1.1.0  
-**Ostatnia aktualizacja**: 2025-01-08  
+**Wersja**: 2.0.0  
+**Ostatnia aktualizacja**: 2025-01-09  
 **Autor**: Manus AI Agent

@@ -8,6 +8,7 @@ import { ArticleOutline } from './ai-writers';
 
 export interface SEOTopic {
   topicName: string;
+  category: 'kompensacja' | 'svg';
   keywords: string[];
   seoDifficulty: number; // 0-100
   relatedProducts: string[];
@@ -55,8 +56,14 @@ function generateTopicFromCategory(
   const categoryName = category.name;
   const productNames = products.map(p => p.name);
 
+  // Determine category based on product/category name
+  const topicCategory = categoryName.toLowerCase().includes('svg') || 
+                        categoryName.toLowerCase().includes('kompensator') 
+                        ? 'svg' as const : 'kompensacja' as const;
+
   return {
     topicName: `Przewodnik po ${categoryName}: Wszystko co musisz wiedzieć`,
+    category: topicCategory,
     keywords: [
       categoryName.toLowerCase(),
       `${categoryName.toLowerCase()} przewodnik`,
@@ -90,9 +97,15 @@ function generateTopicFromCategory(
  */
 function generateTopicFromProduct(product: OdooProduct): SEOTopic {
   const productName = product.name;
+  
+  // Determine category based on product name
+  const topicCategory = productName.toLowerCase().includes('svg') || 
+                        productName.toLowerCase().includes('kompensator') 
+                        ? 'svg' as const : 'kompensacja' as const;
 
   return {
     topicName: `${productName}: Kompletny przegląd i recenzja`,
+    category: topicCategory,
     keywords: [
       productName.toLowerCase(),
       `${productName.toLowerCase()} recenzja`,
@@ -141,6 +154,7 @@ export function generateTrendingTopics(): SEOTopic[] {
   return [
     {
       topicName: 'Jak zwiększyć efektywność energetyczną w domu',
+      category: 'kompensacja' as const,
       keywords: [
         'efektywność energetyczna',
         'oszczędzanie energii',
@@ -165,6 +179,7 @@ export function generateTrendingTopics(): SEOTopic[] {
     },
     {
       topicName: 'Odnawialne źródła energii dla domu - kompletny przewodnik',
+      category: 'kompensacja' as const,
       keywords: [
         'odnawialne źródła energii',
         'panele słoneczne',

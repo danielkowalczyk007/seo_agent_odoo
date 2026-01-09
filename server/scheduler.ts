@@ -101,6 +101,7 @@ export async function runPublicationCycle(config: SchedulerConfig): Promise<void
     for (const topic of allTopics) {
       await createTopic({
         topicName: topic.topicName,
+        category: topic.category || 'kompensacja', // Default to kompensacja if not specified
         keywords: JSON.stringify(topic.keywords),
         seoDifficulty: topic.seoDifficulty,
         relatedProducts: JSON.stringify(topic.relatedProducts),

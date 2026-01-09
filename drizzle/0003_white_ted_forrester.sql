@@ -1,0 +1,1 @@
+ALTER TABLE `blog_posts` ADD `approval_status` enum('pending','approved','rejected') DEFAULT 'pending' NOT NULL;

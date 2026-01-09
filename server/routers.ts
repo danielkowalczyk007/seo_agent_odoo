@@ -8,9 +8,11 @@ import {
   getBlogPostById, 
   getPendingTopics, 
   getPublicationLogs,
+  getConfig,
   getAllConfigs,
-  setConfig
-} from "./db";
+  setConfig,
+  getDb,
+} from './db';
 
 export const appRouter = router({
     // if you need to use socket.io, read and register route in server/_core/index.ts, all api should start with '/api/' so that the gateway can route correctly
@@ -68,6 +70,42 @@ export const appRouter = router({
       // This will be implemented to trigger manual publication
       return { success: true, message: 'Manual publication triggered' };
     }),
+  }),
+
+  workflow: router({
+    approve: publicProcedure
+      .input(z.object({ postId: z.number() }))
+      .mutation(async ({ input }) => {
+        const { approveArticle } = await import('./publication-workflow');
+        await approveArticle(input.postId);
+        return { success: true };
+      }),
+    reject: publicProcedure
+      .input(z.object({ postId: z.number(), reason: z.string().optional() }))
+      .mutation(async ({ input }) => {
+        const { rejectArticle } = await import('./publication-workflow');
+        await rejectArticle(input.postId, input.reason);
+        return { success: true };
+      }),
+    publish: publicProcedure
+      .input(z.object({ postId: z.number() }))
+      .mutation(async ({ input }) => {
+        const { publishApprovedArticle } = await import('./publication-workflow');
+        await publishApprovedArticle(input.postId);
+        return { success: true };
+      }),
+  }),
+
+  socialMedia: router({
+    getByPostId: publicProcedure
+      .input(z.object({ postId: z.number() }))
+      .query(async ({ input }) => {
+        const db = await getDb();
+        if (!db) return [];
+        const { socialMediaPosts } = await import('../drizzle/schema');
+        const { eq } = await import('drizzle-orm');
+        return db.select().from(socialMediaPosts).where(eq(socialMediaPosts.blogPostId, input.postId));
+      }),
   }),
 });
 

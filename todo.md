@@ -77,3 +77,17 @@
 - [x] Napisać i uruchomić testy jednostkowe
 - [ ] Wygenerować 8 wpisów blogowych (użytkownik może użyć Trigger Publication)
 - [ ] Opublikować wpisy w Odoo (automatycznie przez system)
+
+
+## Nowe wymagania - Harmonogram i Odoo Social Media
+- [x] Zaktualizować scheduler aby publikował 2 wpisy tygodniowo (po jednym z każdej kategorii)
+- [x] Dodać pole category do tabeli topics (kompensacja vs SVG)
+- [x] Zaktualizować generator tematów aby przypisywał kategorie
+- [ ] Zintegrować z Odoo Social Media API (wymaga dostępu do Odoo - Etap 2)
+- [x] Stworzyć generator treści social media dla LinkedIn, Facebook, Twitter, Instagram
+- [x] Rozszerzyć schemat bazy danych o tabelę social_media_posts
+- [x] Dodać workflow zatwierdzania artykułów (approve/reject)
+- [x] Dodać tRPC routers dla workflow i social media
+- [ ] Automatycznie publikować posty w Odoo Social Media po zatwierdzeniu (wymaga API - Etap 2)
+- [ ] Dodać stronę Social Media Posts w interfejsie
+- [ ] Napisać testy dla nowych funkcji

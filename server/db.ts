@@ -168,6 +168,12 @@ export async function getConfig(key: string) {
   return result[0];
 }
 
+export async function getAllConfigs() {
+  const db = await getDb();
+  if (!db) return [];
+  return db.select().from(configuration);
+}
+
 export async function setConfig(key: string, value: string) {
   const db = await getDb();
   if (!db) throw new Error("Database not available");
@@ -178,10 +184,4 @@ export async function setConfig(key: string, value: string) {
   } else {
     return db.insert(configuration).values({ key, value });
   }
-}
-
-export async function getAllConfigs() {
-  const db = await getDb();
-  if (!db) return [];
-  return db.select().from(configuration);
 }

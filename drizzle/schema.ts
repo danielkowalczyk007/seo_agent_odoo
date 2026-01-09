@@ -41,6 +41,7 @@ export const blogPosts = mysqlTable("blog_posts", {
   engagementScore: int("engagement_score"),
   totalScore: int("total_score"),
   status: mysqlEnum("status", ["draft", "published", "scheduled", "failed"]).default("draft").notNull(),
+  approvalStatus: mysqlEnum("approval_status", ["pending", "approved", "rejected"]).default("pending").notNull(),
   publishedDate: timestamp("published_date"),
   createdAt: timestamp("created_at").defaultNow().notNull(),
   views: int("views").default(0),
@@ -56,6 +57,7 @@ export type InsertBlogPost = typeof blogPosts.$inferInsert;
 export const topics = mysqlTable("topics", {
   id: int("id").autoincrement().primaryKey(),
   topicName: text("topic_name").notNull(),
+  category: mysqlEnum("category", ["kompensacja", "svg"]).notNull(),
   keywords: text("keywords").notNull(),
   seoDifficulty: int("seo_difficulty"),
   relatedProducts: text("related_products"),
@@ -94,3 +96,20 @@ export const configuration = mysqlTable("configuration", {
 
 export type Configuration = typeof configuration.$inferSelect;
 export type InsertConfiguration = typeof configuration.$inferInsert;
+/**
+ * Social media posts table - stores generated social media content
+ */
+export const socialMediaPosts = mysqlTable("social_media_posts", {
+  id: int("id").autoincrement().primaryKey(),
+  blogPostId: int("blog_post_id").notNull(),
+  platform: mysqlEnum("platform", ["linkedin", "facebook", "twitter", "instagram"]).notNull(),
+  content: text("content").notNull(),
+  hashtags: text("hashtags"),
+  odooPostId: int("odoo_post_id"),
+  status: mysqlEnum("status", ["draft", "published", "failed"]).default("draft").notNull(),
+  publishedAt: timestamp("published_at"),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+});
+
+export type SocialMediaPost = typeof socialMediaPosts.$inferSelect;
+export type InsertSocialMediaPost = typeof socialMediaPosts.$inferInsert;
