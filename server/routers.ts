@@ -3,6 +3,8 @@ import { getSessionCookieOptions } from "./_core/cookies";
 import { systemRouter } from "./_core/systemRouter";
 import { publicProcedure, protectedProcedure, router } from "./_core/trpc";
 import { z } from "zod";
+import { socialMediaPosts } from '../drizzle/schema';
+import { eq } from 'drizzle-orm';
 import { 
   getAllBlogPosts, 
   getBlogPostById, 
@@ -120,6 +122,28 @@ export const appRouter = router({
   }),
 
   socialMedia: router({
+    exportToCSV: publicProcedure
+      .input(z.object({ blogPostId: z.number() }))
+      .query(async ({ input }) => {
+        const db = await getDb();
+        if (!db) throw new Error('Database not available');
+
+        const posts = await db
+          .select()
+          .from(socialMediaPosts)
+          .where(eq(socialMediaPosts.blogPostId, input.blogPostId));
+
+        // Generate CSV content
+        const csvHeader = 'Platform,Content,Blog Post ID\n';
+        const csvRows = posts
+          .map(post => `"${post.platform}","${post.content.replace(/"/g, '""')}",${post.blogPostId}`)
+          .join('\n');
+
+        return {
+          csv: csvHeader + csvRows,
+          filename: `social_media_posts_${input.blogPostId}.csv`,
+        };
+      }),
     getByPostId: publicProcedure
       .input(z.object({ postId: z.number() }))
       .query(async ({ input }) => {

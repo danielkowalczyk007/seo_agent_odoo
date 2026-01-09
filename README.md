@@ -41,6 +41,12 @@ Po zatwierdzeniu artykułu system automatycznie generuje posty promocyjne dla:
 - **Twitter/X**: Krótkie, hashtagi
 - **Instagram**: Visual focus, storytelling
 
+### 6.1. **Eksport Postów Social Media do CSV** (opcja dodatkowa)
+- Przycisk "Export Social Media Posts" w interfejsie Posts
+- Format CSV: Platform, Content, Blog Post ID
+- Gotowe do importu do Odoo Social Media lub innych narzędzi
+- Alternatywa dla pełnej integracji z Odoo Social Media API
+
 ### 7. **Scheduler Publikacji**
 - **Poniedziałek o 9:00 GMT+1**: Artykuł z kategorii "kompensacja mocy biernej"
 - **Czwartek o 9:00 GMT+1**: Artykuł z kategorii "kompensatory SVG"
@@ -98,6 +104,22 @@ System ma już 8 gotowych tematów w bazie danych:
    - Wygeneruje 4 posty social media
    - Opublikuje artykuł w Odoo
    - Wyśle powiadomienie email
+
+### 4.1. **Eksport Postów Social Media**
+1. Przejdź do **Posts**
+2. Znajdź artykuł z wygenerowanymi postami social media
+3. Kliknij **"Export Social Media Posts"**
+4. Pobierz plik CSV z postami
+5. Zaimportuj do Odoo Social Media lub innych narzędzi
+
+Format CSV:
+```csv
+Platform,Content,Blog Post ID
+"linkedin","Profesjonalny post o kompensacji mocy biernej...",1
+"facebook","Czy wiesz, że kompensacja mocy biernej...",1
+"twitter","💡 Kompensacja mocy biernej to oszczędności! #energetyka #przemysł",1
+"instagram","📊 Historia sukcesu: jak firma XYZ zaoszczędziła 30% kosztów energii...",1
+```
 
 ### 5. **Automatyczna Publikacja**
 Scheduler automatycznie uruchamia publikację:

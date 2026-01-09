@@ -106,3 +106,21 @@
 - [ ] Uprościć formularz Configuration - usunąć pola kluczy AI (opcjonalne)
 - [ ] Przetestować generowanie artykułu z systemowymi kluczami (wymaga rozwiązania problemów z limitami API)
 - [x] Zapisać finalny checkpoint
+
+
+## Integracja z Odoo Social Media API
+- [ ] Zbadać strukturę Odoo Social Media API (social.stream.post)
+- [ ] Sprawdzić ID bloga "Produkty"
+- [ ] Zaimplementować funkcję publikacji postów w Odoo Social Media
+- [ ] Dodać mapowanie platform (LinkedIn, Facebook, Twitter, Instagram)
+- [ ] Zaktualizować workflow.approve aby automatycznie publikował w Odoo Social Media
+- [ ] Dodać opcję wyboru bloga w konfiguracji (Aktualności vs Produkty)
+- [ ] Przetestować publikację postów
+- [ ] Zapisać finalny checkpoint
+
+
+## Funkcja eksportu postów social media do CSV (opcja dodatkowa)
+- [x] Dodać tRPC router dla eksportu postów do CSV
+- [x] Stworzyć funkcję generowania CSV z postami (platform, content, blog_post_id)
+- [x] Dodać przycisk "Export to CSV" w interfejsie Posts
+- [ ] Przetestować eksport CSV (wymaga wygenerowania wpisu z postami social media)

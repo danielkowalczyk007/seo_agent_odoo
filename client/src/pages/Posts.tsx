@@ -2,8 +2,40 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { trpc } from "@/lib/trpc";
-import { ArrowLeft, ExternalLink } from "lucide-react";
+import { ArrowLeft, Download, ExternalLink } from "lucide-react";
+import { toast } from "sonner";
 import { Link } from "wouter";
+
+function ExportCSVButton({ postId }: { postId: number }) {
+  const { data, isLoading } = trpc.socialMedia.exportToCSV.useQuery({ blogPostId: postId });
+
+  const handleExport = () => {
+    if (!data) return;
+
+    const blob = new Blob([data.csv], { type: 'text/csv' });
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = data.filename;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    window.URL.revokeObjectURL(url);
+    toast.success('CSV exported successfully');
+  };
+
+  return (
+    <Button 
+      variant="outline" 
+      size="sm" 
+      onClick={handleExport}
+      disabled={isLoading || !data}
+    >
+      <Download className="w-4 h-4 mr-2" />
+      Export Social Media Posts
+    </Button>
+  );
+}
 
 export default function Posts() {
   const { data: posts, isLoading } = trpc.posts.list.useQuery();
@@ -105,12 +137,15 @@ export default function Posts() {
                     </div>
                   )}
 
-                  {post.odooPostId && (
-                    <Button variant="outline" size="sm">
-                      <ExternalLink className="w-4 h-4 mr-2" />
-                      View in Odoo (ID: {post.odooPostId})
-                    </Button>
-                  )}
+                  <div className="flex gap-2">
+                    {post.odooPostId && (
+                      <Button variant="outline" size="sm">
+                        <ExternalLink className="w-4 h-4 mr-2" />
+                        View in Odoo (ID: {post.odooPostId})
+                      </Button>
+                    )}
+                    <ExportCSVButton postId={post.id} />
+                  </div>
                 </CardContent>
               </Card>
             ))}
