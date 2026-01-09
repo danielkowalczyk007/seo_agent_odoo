@@ -1,0 +1,35 @@
+{
+  "query": "SELECT id, `key`, LEFT(value, 20) as value_preview FROM configuration;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 27rjeueS539kGQ2.4bf077d19b17 --database 9f5pVWYESdZELesKfmFbrq --execute SELECT id, `key`, LEFT(value, 20) as value_preview FROM configuration;",
+  "rows": [
+    {
+      "id": "1",
+      "key": "geminiApiKey",
+      "value_preview": "AIzaSyBUpcsO_Y0txvI7"
+    },
+    {
+      "id": "2",
+      "key": "anthropicApiKey",
+      "value_preview": "sk-ant-api03-hEbzneE"
+    },
+    {
+      "id": "3",
+      "key": "openaiApiKey",
+      "value_preview": "sk-proj-_2NKFbNkoWv4"
+    },
+    {
+      "id": "4",
+      "key": "odooApiKey",
+      "value_preview": "e40fda0593050e205a83"
+    },
+    {
+      "id": "30001",
+      "key": "test_key",
+      "value_preview": "test_value"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tkey\tvalue_preview\n1\tgeminiApiKey\tAIzaSyBUpcsO_Y0txvI7\n2\tanthropicApiKey\tsk-ant-api03-hEbzneE\n3\topenaiApiKey\tsk-proj-_2NKFbNkoWv4\n4\todooApiKey\te40fda0593050e205a83\n30001\ttest_key\ttest_value\n",
+  "stderr": "",
+  "execution_time_ms": 54
+}

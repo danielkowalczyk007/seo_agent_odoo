@@ -62,12 +62,15 @@ export async function writeWithChatGPT(
   apiKey: string
 ): Promise<GeneratedArticle> {
   try {
-    const client = new OpenAI({ apiKey });
+    const client = new OpenAI({ 
+      apiKey,
+      baseURL: 'https://openrouter.ai/api/v1',
+    });
     
     const prompt = createPrompt(outline);
     
     const response = await client.chat.completions.create({
-      model: 'gpt-4o-mini',
+      model: 'openai/gpt-4o-mini',
       messages: [
         {
           role: 'system',
@@ -109,10 +112,8 @@ export async function writeWithClaude(
     const client = new Anthropic({ apiKey });
     
     const prompt = createPrompt(outline);
-    
     const response = await client.messages.create({
-      model: 'claude-3-5-sonnet-20241022',
-      max_tokens: 4000,
+      model: 'claude-3-5-sonnet-20240620',     max_tokens: 4000,
       messages: [
         {
           role: 'user',

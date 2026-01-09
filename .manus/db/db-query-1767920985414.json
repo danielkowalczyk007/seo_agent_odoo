@@ -1,0 +1,9 @@
+{
+  "query": "SELECT * FROM publication_log ORDER BY published_at DESC LIMIT 5;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 27rjeueS539kGQ2.4bf077d19b17 --database 9f5pVWYESdZELesKfmFbrq --execute SELECT * FROM publication_log ORDER BY published_at DESC LIMIT 5;",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 54
+}

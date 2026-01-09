@@ -1,340 +1,232 @@
-# SEO Agent for Odoo Blog
+# SEO Agent dla Odoo - Dokumentacja
 
-Zautomatyzowany system generowania i publikacji treści blogowych zoptymalizowanych pod SEO i GEO (Generative Engine Optimization), zintegrowany z Odoo CMS.
+## 📋 Opis Systemu
 
-## 🎯 Funkcje
+Zautomatyzowany system SEO Agent zintegrowany z Odoo CMS, który publikuje wpisy blogowe 2x w tygodniu (poniedziałek i czwartek o 9:00 GMT+1). System wykorzystuje trzy modele AI (Gemini, ChatGPT, Claude) do równoległego generowania treści, ocenia je według kryteriów SEO (30%), czytelności (30%) i engagement (40%), a następnie automatycznie wybiera i publikuje najlepszą wersję.
 
-### Automatyzacja treści
-- **Trzy modele AI**: Gemini, ChatGPT i Claude generują treści równolegle
-- **Inteligentny wybór**: System automatycznie wybiera najlepszą wersję na podstawie:
-  - SEO (30%) - optymalizacja słów kluczowych, struktura, meta dane
-  - Czytelność (30%) - długość zdań, akapitów, użycie list
-  - Engagement (40%) - pytania, CTA, interaktywność
+## 🎯 Główne Funkcje
 
-### Optymalizacja SEO + GEO
-- **SEO (Search Engine Optimization)**: Optymalizacja dla tradycyjnych wyszukiwarek (Google, Bing)
-- **GEO (Generative Engine Optimization)**: Optymalizacja dla wyszukiwarek AI (ChatGPT, Gemini, Perplexity, Claude)
-- Kompleksowe instrukcje pisania zawierające:
-  - Cytowalne fragmenty (snippets)
-  - Tabele porównawcze
-  - Strukturalne odpowiedzi na pytania
-  - Sekcje FAQ
-  - Definicje kluczowych terminów
-
-### Kategoryzacja tematów
-- **Kompensacja mocy biernej** - podstawy, obliczenia, kary, case studies
-- **Kompensatory SVG** - technologia, porównania, zastosowania, wybór
-
-### Workflow zatwierdzania
-- **Approve/Reject** - możliwość zatwierdzenia lub odrzucenia artykułu przed publikacją
-- **Automatyczne generowanie postów social media** po zatwierdzeniu
-- **Powiadomienia email** o statusie artykułów
-
-### Social Media Content
-Po zatwierdzeniu artykułu system automatycznie generuje posty promocyjne dla:
-- **LinkedIn** (profesjonalny, B2B, 150-200 słów)
-- **Facebook** (angażujący, emoji, 100-150 słów)
-- **Twitter/X** (zwięzły, max 280 znaków)
-- **Instagram** (storytelling, 150-200 słów, 5-10 hashtagów)
-
-### Integracja z Odoo
+### 1. **Integracja z Odoo**
 - Pobieranie produktów i kategorii z Odoo
-- Automatyczna publikacja wpisów w Odoo CMS
-- Wsparcie dla wielu blogów
-- **Integracja z Odoo Social Media** (w przygotowaniu - wymaga dostępu do API)
+- Tworzenie wpisów blogowych w Odoo CMS
+- Publikacja w blogu "Aktualności" (ID: 2)
 
-### Harmonogram publikacji
-- Automatyczna publikacja 2x w tygodniu:
-  - **Poniedziałek, 9:00 GMT+1** - Kompensacja mocy biernej
-  - **Czwartek, 9:00 GMT+1** - Kompensatory SVG
+### 2. **Generator Tematów SEO**
+- Analiza danych z Odoo (produkty, kategorie)
+- Generowanie tematów SEO z słowami kluczowymi
+- Ocena trudności SEO (SEO difficulty)
+- Kategoryzacja tematów (kompensacja mocy biernej vs kompensatory SVG)
 
-## 🚀 Pierwsze kroki
+### 3. **AI Writers (3 modele)**
+- **Gemini**: Szybki, kreatywny
+- **ChatGPT** (via OpenRouter): Zbalansowany
+- **Claude**: Precyzyjny, szczegółowy
+- Równoległe generowanie artykułów (2-5 minut)
 
-### 1. Konfiguracja Odoo
+### 4. **System Oceny i Optymalizacji**
+- **SEO Score (30%)**: Gęstość słów kluczowych, meta opisy, linki wewnętrzne
+- **Readability Score (30%)**: Długość zdań, czytelność, struktura
+- **Engagement Score (40%)**: Pytania, CTA, storytelling
+- Automatyczny wybór najlepszej wersji
 
-Przejdź do strony **Configuration** i uzupełnij:
+### 5. **Workflow Zatwierdzania**
+- Draft → Pending Approval → Approved → Published
+- Możliwość ręcznego zatwierdzenia/odrzucenia
+- Automatyczne generowanie postów social media po zatwierdzeniu
 
-#### Odoo API
-- **Odoo URL**: `https://powergo.pl`
-- **Odoo API Key**: Twój klucz API REST Odoo
-- **Baza danych**: `odoo`
-- **ID bloga**: `2` (blog "Aktualności")
+### 6. **Generator Social Media**
+Po zatwierdzeniu artykułu system automatycznie generuje posty promocyjne dla:
+- **LinkedIn**: Profesjonalny ton, B2B
+- **Facebook**: Engagement, przystępny język
+- **Twitter/X**: Krótkie, hashtagi
+- **Instagram**: Visual focus, storytelling
 
-> **Uwaga**: Aby utworzyć nowy blog "Produkty" w Odoo:
-> 1. Zaloguj się do panelu administracyjnego Odoo
-> 2. Przejdź do **Website → Configuration → Blogs**
-> 3. Kliknij **Nowe**
-> 4. Wprowadź nazwę "Produkty"
-> 5. Zapisz i skopiuj ID bloga z URL
+### 7. **Scheduler Publikacji**
+- **Poniedziałek o 9:00 GMT+1**: Artykuł z kategorii "kompensacja mocy biernej"
+- **Czwartek o 9:00 GMT+1**: Artykuł z kategorii "kompensatory SVG"
+- Automatyczne powiadomienia email o publikacjach
 
-#### API Keys dla modeli AI
-- **Gemini API Key**: Klucz z [Google AI Studio](https://aistudio.google.com/)
-- **OpenAI API Key**: Klucz z [OpenAI Platform](https://platform.openai.com/)
-- **Anthropic API Key**: Klucz z [Anthropic Console](https://console.anthropic.com/)
+### 8. **Panel Monitorowania**
+- Dashboard z metrykami publikacji
+- Historia wpisów i logów publikacji
+- Zarządzanie tematami
+- Konfiguracja Odoo i AI
 
-### 2. Pierwsze uruchomienie
+## 🚀 Jak Używać
 
-1. **Przetestuj konfigurację**:
-   - Przejdź do **Dashboard**
-   - Kliknij **Trigger Publication**
-   - System wygeneruje artykuł (status: draft, pending approval)
+### 1. **Konfiguracja Odoo**
+1. Przejdź do **Configuration**
+2. Wprowadź dane Odoo:
+   - **Odoo URL**: https://powergo.pl
+   - **Odoo API Key**: [Twój klucz API]
+   - **Baza danych**: odoo
+   - **Blog ID**: 2 (Aktualności)
+3. Kliknij **Save Configuration**
 
-2. **Zatwierdź artykuł**:
-   - Przejdź do **Posts**
-   - Znajdź wygenerowany artykuł
-   - Kliknij **Approve** aby zatwierdzić
-   - System automatycznie wygeneruje 4 posty social media
+### 2. **Gotowe Tematy**
+System ma już 8 gotowych tematów w bazie danych:
 
-3. **Opublikuj artykuł**:
-   - Po zatwierdzeniu kliknij **Publish**
-   - Artykuł zostanie opublikowany w Odoo CMS
+**Kompensacja mocy biernej (4 tematy):**
+1. Kompensacja mocy biernej - podstawy i korzyści dla przedsiębiorstw
+2. Jak obliczyć zapotrzebowanie na kompensację mocy biernej?
+3. Kary za niską wartość współczynnika mocy cosφ - jak ich uniknąć?
+4. Kompensacja mocy biernej w instalacjach przemysłowych - case study
 
-4. **Sprawdź posty social media**:
-   - Przejdź do **Social Media Posts**
-   - Zobacz wygenerowane posty dla LinkedIn, Facebook, Twitter, Instagram
+**Kompensatory SVG (4 tematy):**
+5. Kompensatory SVG - nowoczesna technologia kompensacji mocy biernej
+6. SVG vs tradycyjne baterie kondensatorów - porównanie rozwiązań
+7. Zastosowania kompensatorów SVG w energetyce odnawialnej
+8. Jak wybrać odpowiedni kompensator SVG dla swojej instalacji?
 
-## 📊 Panel administracyjny
+### 3. **Ręczne Uruchomienie Publikacji**
+1. Przejdź do **Dashboard**
+2. Kliknij **Trigger Publication**
+3. System:
+   - Wybierze pierwszy temat z listy
+   - Wygeneruje 3 wersje artykułu (Gemini, ChatGPT, Claude)
+   - Oceni je według kryteriów SEO+GEO
+   - Wybierze najlepszą wersję
+   - Zapisze jako draft z statusem "pending approval"
+4. Proces zajmuje **2-5 minut**
 
-### Dashboard
-- Przegląd ostatnich publikacji
-- Statystyki wydajności
-- Ręczne uruchamianie publikacji
-- Status zatwierdzania artykułów
+### 4. **Zatwierdzanie Artykułów**
+1. Przejdź do **Posts**
+2. Znajdź artykuł ze statusem "Pending Approval"
+3. Przejrzyj treść i wyniki oceny
+4. Kliknij **Approve** lub **Reject**
+5. Po zatwierdzeniu system automatycznie:
+   - Wygeneruje 4 posty social media
+   - Opublikuje artykuł w Odoo
+   - Wyśle powiadomienie email
 
-### Configuration
-- Konfiguracja Odoo API
-- Ustawienia modeli AI
-- Harmonogram publikacji
+### 5. **Automatyczna Publikacja**
+Scheduler automatycznie uruchamia publikację:
+- **Poniedziałek 9:00 GMT+1**: Temat z kategorii "kompensacja"
+- **Czwartek 9:00 GMT+1**: Temat z kategorii "SVG"
 
-### Posts
-- Historia wszystkich publikacji
-- **Approval Status** (pending, approved, rejected)
-- Metryki wydajności (views, engagement, SEO score)
-- Akcje: Approve, Reject, Publish
+## 🔧 Instrukcje SEO + GEO
 
-### Topics
-- Lista zaproponowanych tematów
-- **Kategoria** (kompensacja, svg)
-- Status tematów (pending, used)
-- Słowa kluczowe i trudność SEO
+System używa zaawansowanych instrukcji pisania dla AI, które optymalizują treści pod:
 
-### Social Media Posts (w przygotowaniu)
-- Lista wygenerowanych postów
-- Platforma (LinkedIn, Facebook, Twitter, Instagram)
-- Status publikacji
-- Podgląd treści i hashtagów
-
-## 🔄 Workflow publikacji
-
-### Automatyczny (scheduler)
-1. **Poniedziałek 9:00** - System wybiera temat z kategorii "kompensacja"
-2. Generuje 3 wersje artykułu (Gemini, ChatGPT, Claude)
-3. Ocenia i wybiera najlepszą wersję
-4. Zapisuje jako draft z statusem "pending approval"
-5. **Czekaj na zatwierdzenie**
-
-### Ręczny (workflow)
-1. **Przejrzyj artykuł** w sekcji Posts
-2. **Approve** - zatwierdź artykuł:
-   - System generuje 4 posty social media
-   - Wysyła powiadomienie email
-3. **Publish** - opublikuj zatwierdzony artykuł:
-   - Publikacja w Odoo CMS
-   - Aktualizacja statusu na "published"
-4. **Reject** - odrzuć artykuł (opcjonalnie z powodem)
-
-## 🔧 Technologia
-
-### Backend
-- **Node.js + TypeScript**
-- **Express + tRPC** - type-safe API
-- **Drizzle ORM** - baza danych
-- **MySQL/TiDB** - przechowywanie danych
-- **Cron** - scheduler publikacji
-
-### Frontend
-- **React 19**
-- **Tailwind CSS 4**
-- **shadcn/ui** - komponenty UI
-- **Wouter** - routing
-
-### AI Models
-- **Google Gemini 2.0 Flash** - szybka generacja treści
-- **OpenAI GPT-4o Mini** - zbalansowana jakość/koszt
-- **Anthropic Claude 3.5 Sonnet** - najwyższa jakość
-
-## 📝 Instrukcje pisania SEO + GEO
-
-System używa kompleksowych instrukcji pisania, które zapewniają:
-
-### Struktura artykułu
-- Tytuł z słowami kluczowymi
-- Meta opis (150-160 znaków)
-- Wstęp z hookiem i obietnicą wartości
-- Nagłówki H2/H3 jako pytania
-- Sekcja FAQ (5-7 pytań)
-- Call-to-Action
-
-### Elementy GEO
-- **Cytowalne fragmenty**: Krótkie, samodzielne odpowiedzi (2-3 zdania)
-- **Tabele porównawcze**: Strukturyzowane dane
-- **Definicje**: Jasne wyjaśnienia kluczowych terminów
-- **Listy**: Punktowane i numerowane
-- **Źródła**: Zawsze podawane dla statystyk
-
-### Optymalizacja SEO
+### **SEO (Search Engine Optimization)**
 - Gęstość słów kluczowych: 1-2%
-- Semantyczne słowa kluczowe (LSI)
-- Linki wewnętrzne: 3-5 na artykuł
-- Długość: 1500-2000 słów
+- Meta opisy: 150-160 znaków
+- Nagłówki H1, H2, H3
+- Linki wewnętrzne
+- Alt text dla obrazów
 
-## 📱 Social Media Content
+### **GEO (Generative Engine Optimization)**
+- Cytowalne fragmenty (snippets)
+- Strukturalne odpowiedzi na pytania
+- Tabele i listy
+- FAQ sections
+- Jasne definicje
+- Kontekst i źródła
 
-### LinkedIn (B2B, profesjonalny)
-- Długość: 150-200 słów
-- Rozpoczyna od pytania lub statystyki
-- Podkreśla wartość biznesową
-- 3-5 hashtagów branżowych
+## ⚠️ Znane Problemy i Rozwiązania
 
-### Facebook (engagement)
-- Długość: 100-150 słów
-- Hook: pytanie lub ciekawostka
-- 2-3 emoji
-- Zachęta do komentowania
-- 3-5 hashtagów
+### Problem 1: "Odoo configuration is incomplete"
+**Rozwiązanie**: Upewnij się, że wszystkie pola w Configuration są wypełnione i zapisane.
 
-### Twitter/X (zwięzły)
-- Długość: max 280 znaków
-- Dynamiczny, bezpośredni
-- 1-2 emoji
-- 3-4 hashtagi
+### Problem 2: Gemini API quota exceeded
+**Rozwiązanie**: Zaczekaj 1-2 minuty i spróbuj ponownie. System automatycznie użyje retry logic.
 
-### Instagram (storytelling)
-- Długość: 150-200 słów
-- Mini-historia lub scenariusz
-- 3-5 emoji
-- Krótkie akapity
-- 5-10 hashtagów
+### Problem 3: OpenRouter "Insufficient credits"
+**Rozwiązanie**: 
+- Opcja A: Zakup kredytów na https://openrouter.ai/settings/credits
+- Opcja B: System automatycznie użyje Anthropic jako fallback
 
-## 🛠️ Rozwój
+### Problem 4: Brak wpisów po kliknięciu "Trigger Publication"
+**Możliwe przyczyny**:
+1. Limity API (Gemini quota, OpenRouter credits)
+2. Błąd połączenia z Odoo
+3. Brak tematów w bazie danych
 
-### Struktura projektu
+**Rozwiązanie**:
+1. Sprawdź logi serwera
+2. Sprawdź konfigurację w bazie
+3. Sprawdź tematy: `SELECT * FROM topics WHERE status='pending';`
+4. Poczekaj 2-5 minut na zakończenie generowania
+
+## 🔑 Klucze API
+
+System używa **wbudowanych kluczy API Manus** (GEMINI_API_KEY, ANTHROPIC_API_KEY) zamiast wymagać własnych kluczy od użytkownika. To upraszcza konfigurację i zapewnia natychmiastowe działanie.
+
+## 📈 Metryki i Monitorowanie
+
+Dashboard pokazuje:
+- **Total Posts**: Liczba wszystkich wpisów
+- **Published**: Opublikowane wpisy
+- **Drafts**: Wersje robocze
+- **Successful Publications**: Udane publikacje
+- **Recent Posts**: Ostatnie wygenerowane artykuły
+- **Publication Log**: Historia publikacji z błędami
+
+## 🔄 Workflow Publikacji
+
 ```
-seo_agent_odoo/
-├── client/                 # Frontend React
-│   └── src/
-│       ├── pages/         # Strony aplikacji
-│       └── components/    # Komponenty UI
-├── server/                # Backend Node.js
-│   ├── ai-writers.ts      # Moduły AI writers
-│   ├── seo-optimizer.ts   # Optymalizacja SEO
-│   ├── seo-generator.ts   # Generator tematów
-│   ├── scheduler.ts       # Scheduler publikacji
-│   ├── odoo-client.ts     # Klient Odoo API
-│   ├── writing-instructions.ts  # Instrukcje SEO+GEO
-│   ├── social-media-generator.ts  # Generator postów social media
-│   ├── publication-workflow.ts    # Workflow zatwierdzania
-│   ├── db.ts              # Query helpers
-│   └── routers.ts         # tRPC routers
-└── drizzle/               # Schemat bazy danych
-    └── schema.ts
+1. Trigger Publication (ręczne lub automatyczne)
+   ↓
+2. Wybór tematu z bazy danych (status: pending)
+   ↓
+3. Generowanie 3 wersji artykułu (Gemini, ChatGPT, Claude) - 2-5 min
+   ↓
+4. Ocena według kryteriów SEO (30%) + Readability (30%) + Engagement (40%)
+   ↓
+5. Wybór najlepszej wersji
+   ↓
+6. Optymalizacja (meta opisy, słowa kluczowe, linki)
+   ↓
+7. Zapis do bazy jako draft (status: pending approval)
+   ↓
+8. Ręczne zatwierdzenie przez użytkownika
+   ↓
+9. Generowanie 4 postów social media (LinkedIn, Facebook, Twitter, Instagram)
+   ↓
+10. Publikacja w Odoo CMS
+   ↓
+11. Powiadomienie email do właściciela
 ```
 
-### Uruchomienie lokalnie
-```bash
-# Instalacja zależności
-pnpm install
+## 🛠️ Rozwój i Rozszerzenia
 
-# Migracja bazy danych
-pnpm db:push
+### Etap 2 (wymaga dostępu do Odoo):
+- [ ] Integracja z Odoo Social Media API
+- [ ] Automatyczna publikacja postów w Odoo Social Media
+- [ ] Stworzenie nowego bloga "Produkty" w Odoo
 
-# Uruchomienie dev servera
-pnpm dev
-
-# Testy
-pnpm test
-```
-
-## 📚 Dokumentacja API
-
-### tRPC Endpoints
-
-#### Workflow
-- `workflow.approve` - Zatwierdź artykuł i wygeneruj posty social media
-- `workflow.reject` - Odrzuć artykuł (z opcjonalnym powodem)
-- `workflow.publish` - Opublikuj zatwierdzony artykuł w Odoo
-
-#### Social Media
-- `socialMedia.getByPostId` - Pobierz posty social media dla artykułu
-
-#### Posts
-- `posts.list` - Lista wszystkich publikacji
-- `posts.get` - Szczegóły pojedynczej publikacji
-
-#### Topics
-- `topics.pending` - Lista oczekujących tematów (z filtrowaniem po kategorii)
-
-#### Configuration
-- `config.get` - Pobiera wszystkie konfiguracje
-- `config.set` - Ustawia wartość konfiguracji
-
-## 🔐 Bezpieczeństwo
-
-- Wszystkie API keys przechowywane w bazie danych
-- Autentykacja przez Manus OAuth
-- Tylko właściciel ma dostęp do panelu
-- HTTPS dla wszystkich połączeń
-
-## 🐛 Rozwiązywanie problemów
-
-### Błąd: "Odoo API connection failed"
-- Sprawdź URL Odoo (bez końcowego `/`)
-- Zweryfikuj API Key
-- Upewnij się, że REST API module jest zainstalowany w Odoo
-
-### Błąd: "AI model generation failed"
-- Sprawdź API keys dla modeli AI
-- Zweryfikuj limity API (rate limits)
-- Sprawdź logi w konsoli
-
-### Błąd: "Blog not found"
-- Zweryfikuj ID bloga w konfiguracji
-- Sprawdź czy blog istnieje w Odoo
-- Upewnij się, że masz uprawnienia do bloga
-
-### Artykuł nie publikuje się
-- Sprawdź czy artykuł ma status "approved"
-- Zweryfikuj konfigurację Odoo API
-- Sprawdź logi publikacji w Publication Log
-
-## 📈 Roadmap
-
-### Etap 1 (ukończony)
-- ✅ Kategoryzacja tematów (kompensacja vs SVG)
-- ✅ Generator treści social media
-- ✅ Workflow zatwierdzania artykułów
-- ✅ Harmonogram 2x w tygodniu (po jednym z każdej kategorii)
-
-### Etap 2 (w przygotowaniu)
-- 🔄 Integracja z Odoo Social Media API
-- 🔄 Automatyczna publikacja postów w Odoo Social Media
-- 🔄 Interfejs zarządzania postami social media
-- 🔄 Metryki wydajności postów social media
+### Potencjalne rozszerzenia:
+- [ ] A/B testing tytułów
+- [ ] Analiza wydajności wpisów (views, engagement)
+- [ ] Automatyczne generowanie obrazów dla wpisów
+- [ ] Integracja z Google Analytics
+- [ ] Eksport raportów SEO do PDF
 
 ## 📞 Wsparcie
 
 W razie problemów:
-1. Sprawdź logi w konsoli przeglądarki
-2. Przejrzyj logi serwera
-3. Sprawdź Publication Log w dashboardzie
-4. Skontaktuj się z zespołem PowerGo
+1. Sprawdź logi serwera
+2. Sprawdź konfigurację w bazie danych
+3. Sprawdź limity API (Gemini, OpenRouter, Anthropic)
+4. Skontaktuj się z administratorem Odoo
 
-## 📄 Licencja
+## 📝 Changelog
 
-MIT License - Copyright (c) 2025 PowerGo
+### v1.0.0 (2026-01-09)
+- ✅ Integracja z Odoo REST API
+- ✅ Generator tematów SEO
+- ✅ 3 modele AI (Gemini, ChatGPT, Claude)
+- ✅ System oceny i optymalizacji
+- ✅ Workflow zatwierdzania
+- ✅ Generator social media
+- ✅ Scheduler 2x w tygodniu
+- ✅ Panel monitorowania
+- ✅ 8 gotowych tematów w bazie
+- ✅ Instrukcje SEO + GEO dla pisarzy AI
+- ✅ Wbudowane klucze API Manus
 
 ---
 
-**Wersja**: 2.0.0  
-**Ostatnia aktualizacja**: 2025-01-09  
-**Autor**: Manus AI Agent
+**Autor**: Manus AI Agent  
+**Data**: 9 stycznia 2026  
+**Wersja**: 1.0.0

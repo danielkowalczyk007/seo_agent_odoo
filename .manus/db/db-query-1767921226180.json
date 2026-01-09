@@ -1,0 +1,9 @@
+{
+  "query": "SELECT id, title, ai_writer, status, approval_status, created_at FROM blog_posts ORDER BY created_at DESC LIMIT 1;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 27rjeueS539kGQ2.4bf077d19b17 --database 9f5pVWYESdZELesKfmFbrq --execute SELECT id, title, ai_writer, status, approval_status, created_at FROM blog_posts ORDER BY created_at DESC LIMIT 1;",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 66
+}

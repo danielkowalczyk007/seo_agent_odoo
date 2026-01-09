@@ -91,3 +91,18 @@
 - [ ] Automatycznie publikować posty w Odoo Social Media po zatwierdzeniu (wymaga API - Etap 2)
 - [ ] Dodać stronę Social Media Posts w interfejsie
 - [ ] Napisać testy dla nowych funkcji
+
+
+## Naprawa Trigger Publication
+- [ ] Zaimplementować pełną logikę w publication.trigger router
+- [ ] Połączyć z funkcją runPublicationCycle z scheduler.ts
+- [ ] Przetestować generowanie artykułów
+- [ ] Przetestować workflow zatwierdzania
+
+
+## Aktualizacja na wbudowane klucze API Manus
+- [x] Zaktualizować manual-publication.ts aby używał systemowych kluczy API (GEMINI_API_KEY, ANTHROPIC_API_KEY)
+- [x] Zaktualizować routers.ts publication.trigger aby używał systemowych kluczy
+- [ ] Uprościć formularz Configuration - usunąć pola kluczy AI (opcjonalne)
+- [ ] Przetestować generowanie artykułu z systemowymi kluczami (wymaga rozwiązania problemów z limitami API)
+- [x] Zapisać finalny checkpoint

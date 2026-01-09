@@ -67,8 +67,31 @@ export const appRouter = router({
       return await getPublicationLogs();
     }),
     trigger: protectedProcedure.mutation(async () => {
-      // This will be implemented to trigger manual publication
-      return { success: true, message: 'Manual publication triggered' };
+      try {
+        // Get configuration
+        const odooUrlConfig = await getConfig('odoo_url');
+        const odooApiKeyConfig = await getConfig('odoo_api_key');
+        const odooDatabaseConfig = await getConfig('odoo_database');
+        const odooBlogIdConfig = await getConfig('odoo_blog_id');
+
+        if (!odooUrlConfig || !odooApiKeyConfig || !odooDatabaseConfig || !odooBlogIdConfig) {
+          throw new Error('Odoo configuration is incomplete');
+        }
+
+        // Import manual publication function
+        const { runManualPublication } = await import('./manual-publication');
+
+        // Run manual publication (uses system API keys)
+        await runManualPublication();
+
+        return { success: true, message: 'Publication completed successfully' };
+      } catch (error) {
+        console.error('[Publication] Trigger failed:', error);
+        return { 
+          success: false, 
+          message: `Publication failed: ${error instanceof Error ? error.message : 'Unknown error'}` 
+        };
+      }
     }),
   }),
 
