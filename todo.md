@@ -124,3 +124,12 @@
 - [x] Stworzyć funkcję generowania CSV z postami (platform, content, blog_post_id)
 - [x] Dodać przycisk "Export to CSV" w interfejsie Posts
 - [ ] Przetestować eksport CSV (wymaga wygenerowania wpisu z postami social media)
+
+
+## Feedback UI dla Trigger Publication
+- [x] Dodać loading state (spinner) do przycisku "Trigger Publication"
+- [x] Dodać toast notification "Generating article..." po kliknięciu
+- [x] Dodać toast notification "Article generated successfully!" po zakończeniu
+- [x] Dodać toast notification z błędem jeśli generowanie się nie powiodło
+- [ ] Dodać progress indicator z etapami (opcjonalne - wymaga WebSocket/SSE)
+- [x] Przetestować feedback UI

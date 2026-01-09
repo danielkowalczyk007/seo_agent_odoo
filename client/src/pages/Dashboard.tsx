@@ -2,7 +2,7 @@ import { useAuth } from "@/_core/hooks/useAuth";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { trpc } from "@/lib/trpc";
-import { Activity, Calendar, FileText, Play, Settings } from "lucide-react";
+import { Activity, Calendar, FileText, Loader2, Play, Settings } from "lucide-react";
 import { Link } from "wouter";
 import { toast } from "sonner";
 
@@ -11,11 +11,23 @@ export default function Dashboard() {
   const { data: posts, isLoading: postsLoading } = trpc.posts.list.useQuery();
   const { data: logs, isLoading: logsLoading } = trpc.publication.logs.useQuery();
   const triggerPublication = trpc.publication.trigger.useMutation({
+    onMutate: () => {
+      toast.info("🤖 Generating article...", {
+        description: "This will take 2-5 minutes. AI models are writing in parallel.",
+        duration: 5000,
+      });
+    },
     onSuccess: () => {
-      toast.success("Manual publication triggered successfully");
+      toast.success("✅ Article generated successfully!", {
+        description: "Check the Posts page to review and approve it.",
+        duration: 10000,
+      });
     },
     onError: (error) => {
-      toast.error(`Failed to trigger publication: ${error.message}`);
+      toast.error("❌ Failed to generate article", {
+        description: error.message,
+        duration: 10000,
+      });
     },
   });
 
@@ -45,8 +57,17 @@ export default function Dashboard() {
               onClick={() => triggerPublication.mutate()}
               disabled={triggerPublication.isPending}
             >
-              <Play className="w-4 h-4 mr-2" />
-              Trigger Publication
+              {triggerPublication.isPending ? (
+                <>
+                  <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                  Generating...
+                </>
+              ) : (
+                <>
+                  <Play className="w-4 h-4 mr-2" />
+                  Trigger Publication
+                </>
+              )}
             </Button>
           </div>
         </div>
