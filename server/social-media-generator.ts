@@ -3,7 +3,19 @@
  * Generates platform-specific promotional posts for blog articles
  */
 
-import { invokeLLM } from "./_core/llm";
+import { invokeLLM } from './_core/llm';
+
+/**
+ * Clean markdown code blocks from LLM response
+ */
+function cleanJsonResponse(content: string): string {
+  // Remove markdown code blocks if present
+  const match = content.match(/```(?:json)?\s*([\s\S]*?)```/);
+  if (match) {
+    return match[1].trim();
+  }
+  return content.trim();
+}
 
 export interface SocialMediaPost {
   platform: 'linkedin' | 'facebook' | 'twitter' | 'instagram';
@@ -71,7 +83,8 @@ Odpowiedź w formacie JSON:
   if (typeof content !== 'string') {
     throw new Error('Invalid response format from LLM');
   }
-  const result = JSON.parse(content);
+  const cleanedContent = cleanJsonResponse(content);
+  const result = JSON.parse(cleanedContent);
 
   return {
     platform: 'linkedin',
@@ -118,7 +131,8 @@ Odpowiedź w formacie JSON:
   if (typeof content !== 'string') {
     throw new Error('Invalid response format from LLM');
   }
-  const result = JSON.parse(content);
+  const cleanedContent = cleanJsonResponse(content);
+  const result = JSON.parse(cleanedContent);
 
   return {
     platform: 'facebook',
@@ -163,7 +177,8 @@ Odpowiedź w formacie JSON:
   if (typeof content !== 'string') {
     throw new Error('Invalid response format from LLM');
   }
-  const result = JSON.parse(content);
+  const cleanedContent = cleanJsonResponse(content);
+  const result = JSON.parse(cleanedContent);
 
   return {
     platform: 'twitter',
@@ -210,7 +225,8 @@ Odpowiedź w formacie JSON:
   if (typeof content !== 'string') {
     throw new Error('Invalid response format from LLM');
   }
-  const result = JSON.parse(content);
+  const cleanedContent = cleanJsonResponse(content);
+  const result = JSON.parse(cleanedContent);
 
   return {
     platform: 'instagram',

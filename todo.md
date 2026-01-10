@@ -167,3 +167,24 @@
 - [x] Naprawić typy TypeScript w manual-publication.ts
 - [x] Przetestować generowanie artykułu end-to-end
 - [x] Wygenerować pierwszy artykuł testowy pomyślnie
+
+## Aktualizacja nazwy bazy danych Odoo (9 stycznia 2026)
+- [ ] Zaktualizować nazwę bazy danych z "odoo" na "danielkowalczyk007-power-powergo-7087431"
+- [ ] Przetestować połączenie z Odoo API
+- [ ] Zweryfikować czy artykuły mogą być publikowane w Odoo
+- [ ] Zapisać checkpoint po pomyślnym teście
+
+## Przepisanie Odoo Client na XML-RPC (9-10 stycznia 2026)
+- [x] Zainstalować bibliotekę xmlrpc dla Node.js
+- [x] Przepisać odoo-client.ts aby używał XML-RPC zamiast REST API
+- [x] Zaimplementować authentication przez XML-RPC
+- [x] Zaimplementować createBlogPost przez XML-RPC
+- [x] Zaimplementować publishBlogPost przez XML-RPC
+- [x] Przetestować połączenie i tworzenie postów (Post ID 208 utworzony)
+- [x] Zaktualizować scheduler.ts i publication-workflow.ts aby używały nowego klienta
+- [x] Usunąć meta_description (nie istnieje w Odoo 16)
+- [x] Naprawić social-media-generator.ts (cleanJsonResponse dla markdown)
+- [x] Przetestować end-to-end generowanie i publikację artykułu
+- [x] Artykuł opublikowany pomyślnie w systemie (status: published)
+- [ ] Zweryfikować czy artykuł jest widoczny w Odoo blog
+- [ ] Zapisać checkpoint po pomyślnym teście

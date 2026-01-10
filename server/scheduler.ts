@@ -79,10 +79,19 @@ export async function runPublicationCycle(config: SchedulerConfig): Promise<void
 
     // Step 1: Connect to Odoo
     console.log('[Scheduler] Step 1: Connecting to Odoo...');
+    // Get username and password from config
+    const odooUsernameConfig = await getConfig('odoo_username');
+    const odooPasswordConfig = await getConfig('odoo_password');
+    
+    if (!odooUsernameConfig || !odooPasswordConfig) {
+      throw new Error('Odoo username or password not configured');
+    }
+    
     const odooClient = await createOdooClient(
       config.odooUrl,
-      config.odooApiKey,
-      config.odooDatabase
+      config.odooDatabase,
+      odooUsernameConfig.value,
+      odooPasswordConfig.value
     );
 
     // Step 2: Fetch data from Odoo

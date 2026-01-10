@@ -122,11 +122,12 @@ export async function publishApprovedArticle(postId: number): Promise<void> {
     
     // Get Odoo config
     const odooUrlConfig = await getConfig('odoo_url');
-    const odooApiKeyConfig = await getConfig('odoo_api_key');
     const odooDatabaseConfig = await getConfig('odoo_database');
+    const odooUsernameConfig = await getConfig('odoo_username');
+    const odooPasswordConfig = await getConfig('odoo_password');
     const odooBlogIdConfig = await getConfig('odoo_blog_id');
     
-    if (!odooUrlConfig || !odooApiKeyConfig || !odooDatabaseConfig || !odooBlogIdConfig) {
+    if (!odooUrlConfig || !odooDatabaseConfig || !odooUsernameConfig || !odooPasswordConfig || !odooBlogIdConfig) {
       throw new Error('Odoo configuration not found');
     }
     
@@ -134,8 +135,9 @@ export async function publishApprovedArticle(postId: number): Promise<void> {
     console.log(`[Workflow] Publishing to Odoo blog...`);
     const odooClient = await createOdooClient(
       odooUrlConfig.value,
-      odooApiKeyConfig.value,
-      odooDatabaseConfig.value
+      odooDatabaseConfig.value,
+      odooUsernameConfig.value,
+      odooPasswordConfig.value
     );
     const odooPostId = await odooClient.createBlogPost({
       name: post.title,

@@ -1,0 +1,16 @@
+{
+  "query": "SHOW TABLES LIKE '%post%';",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 27rjeueS539kGQ2.4bf077d19b17 --database 9f5pVWYESdZELesKfmFbrq --execute SHOW TABLES LIKE '%post%';",
+  "rows": [
+    {
+      "Tables_in_9f5pVWYESdZELesKfmFbrq (%post%)": "blog_posts"
+    },
+    {
+      "Tables_in_9f5pVWYESdZELesKfmFbrq (%post%)": "social_media_posts"
+    }
+  ],
+  "messages": [],
+  "stdout": "Tables_in_9f5pVWYESdZELesKfmFbrq (%post%)\nblog_posts\nsocial_media_posts\n",
+  "stderr": "",
+  "execution_time_ms": 48
+}
